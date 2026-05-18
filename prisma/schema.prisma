@@ -1,0 +1,466 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// Company/Organization
+model Company {
+  id          String   @id @default(cuid())
+  name        String
+  industry    String?
+  headquarters String?
+  employeeCount Int?
+  annualRevenue Float?
+  facilityCount Int?
+  defaultReportMode String?
+  defaultReportingStandard String?
+  defaultGwpBasis String?
+  defaultFactorSourcePolicy String?
+  defaultOverridePolicy String?
+  defaultReportOwnerName String?
+  defaultReportOwnerEmail String?
+  defaultReportReviewerIds String?
+  defaultReportRecipients String?
+  defaultApprovalWorkflow String?
+  defaultOrganizationalBoundaryMethod String?
+  defaultOrganizationalBoundaryNotes String?
+  defaultBaseYear Int?
+  defaultBaseYearNotes String?
+  defaultBaseYearRecalculationPolicy String?
+  defaultScope2Method String?
+  defaultScope2MarketBasedEmissions Float?
+  defaultScope2DisclosureNotes String?
+  defaultScope2InstrumentNotes String?
+  annualDisclosureNotes String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  departments Department[]
+  sustainabilityGoals SustainabilityGoal[]
+  carbonLedgerEntries CarbonLedgerEntry[]
+  reports Report[]
+  complianceChecklists ComplianceChecklist[]
+  users User[]
+  ingestJobs IngestJob[]
+  notionConfig NotionConfig?
+}
+
+model User {
+  id                String   @id @default(cuid())
+  email             String   @unique
+  name              String
+  accessTokenHash   String
+  role              String   @default("standard")
+  status            String   @default("active")
+  companyId         String
+  company           Company  @relation(fields: [companyId], references: [id])
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  auditLogs         AuditLog[]
+  createdEntries    CarbonLedgerEntry[] @relation("LedgerEntryCreatedBy")
+  updatedEntries    CarbonLedgerEntry[] @relation("LedgerEntryUpdatedBy")
+  verifiedEntries   CarbonLedgerEntry[] @relation("LedgerEntryVerifiedBy")
+  factorOverriddenEntries CarbonLedgerEntry[] @relation("LedgerEntryFactorOverrideBy")
+
+  @@index([companyId, role])
+}
+
+// Department within company
+model Department {
+  id          String   @id @default(cuid())
+  name        String
+  code        String   // e.g., "HR", "OPS", "FIN"
+  budget      Float?   // Annual budget for tracking
+  locationDetail String?
+  address     String?
+  country     String?
+  facilityType String?
+  companyId   String
+  company     Company  @relation(fields: [companyId], references: [id])
+  
+  // Notion sync
+  notionPageId      String?  @unique
+  notionSyncedAt    DateTime?
+  notionLastEditedAt DateTime?
+  notionLastEditor  String?
+  notionSyncStatus  String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  carbonLedgerEntries CarbonLedgerEntry[]
+  sustainabilityGoals SustainabilityGoal[]
+  ingestJobs IngestJob[]
+  
+  @@unique([companyId, code])
+}
+
+// Carbon Ledger Entry - raw emissions data
+model CarbonLedgerEntry {
+  id                String   @id @default(cuid())
+  // Source information
+  sourceType        String   // "electricity", "travel", "shipping", "gas", "waste", "water", "other"
+  sourceDocument    String?  // Original document name/ID
+  documentUrl       String?  // URL to stored document
+  notes             String?
+  
+  // Categorization
+  category          String   // "Scope 1", "Scope 2", "Scope 3"
+  subCategory       String?  // More specific categorization
+  
+  // Data values
+  activityValue     Float    // The raw value (kWh, miles, kg, etc.)
+  activityUnit      String   // Unit of measurement
+  emissionFactor    Float    // EPA emission factor applied
+  emissionFactorUnit String  // e.g., "kg CO2e/kWh"
+  emissionFactorId  String?
+  appliedEmissionFactor EmissionFactor? @relation("AppliedEmissionFactor", fields: [emissionFactorId], references: [id], onDelete: SetNull)
+  factorSource      String?
+  factorSourceFamily String?
+  factorYear        Int?
+  factorRegion      String?
+  factorMethodology String?
+  factorGwpBasis    String?
+  factorDescription String?
+  factorOverridden  Boolean  @default(false)
+  factorOverrideReason String?
+  factorOverrideAt  DateTime?
+  factorOverrideByUserId String?
+  factorOverrideByUser User? @relation("LedgerEntryFactorOverrideBy", fields: [factorOverrideByUserId], references: [id])
+  factorOverrideByName String?
+  
+  // Calculated emissions
+  co2Equivalent     Float    // Calculated CO2 equivalent in kg
+  co2Unit           String   @default("kg CO2e")
+  
+  // Metadata
+  transactionDate   DateTime // When the activity occurred
+  reportingPeriod   String   // e.g., "2024-Q1", "2024-03"
+  
+  // Relationships
+  departmentId      String
+  department        Department @relation(fields: [departmentId], references: [id])
+  companyId         String
+  company           Company @relation(fields: [companyId], references: [id])
+  
+  // Notion sync
+  notionPageId      String?  @unique
+  notionSyncedAt    DateTime?
+  notionLastEditedAt DateTime?
+  notionLastEditor  String?
+  notionSyncStatus  String?
+  
+  // Audit
+  verified          Boolean  @default(false)
+  verifiedBy        String?
+  verifiedByUserId  String?
+  verifiedByUser    User?    @relation("LedgerEntryVerifiedBy", fields: [verifiedByUserId], references: [id])
+  verifiedAt        DateTime?
+  createdByUserId   String?
+  createdByUser     User?    @relation("LedgerEntryCreatedBy", fields: [createdByUserId], references: [id])
+  createdByName     String?
+  updatedByUserId   String?
+  updatedByUser     User?    @relation("LedgerEntryUpdatedBy", fields: [updatedByUserId], references: [id])
+  updatedByName     String?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Original extracted data
+  rawExtractedText  String?  // OCR extracted text
+  aiClassification  String?  // AI classification confidence
+  
+  @@index([companyId, reportingPeriod])
+  @@index([departmentId])
+  @@index([sourceType])
+  @@index([createdByUserId])
+  @@index([verifiedByUserId])
+  @@index([emissionFactorId])
+  @@index([factorOverrideByUserId])
+}
+
+model IngestJob {
+  id                String   @id @default(cuid())
+  ingestType        String   // "evidence_upload", "csv_import"
+  status            String   @default("queued") // "queued", "storing", "parsing", "importing", "completed", "failed"
+  progress          Int      @default(0)
+  fileName          String
+  storedFileName    String?
+  mimeType          String
+  fileSize          Int
+  storagePath       String?
+  documentUrl       String?
+  rowCount          Int?
+  createdEntries    Int?
+  failedRows        Int?
+  message           String?
+  errorMessage      String?
+  result            String?
+  createdByUserId   String?
+  createdByName     String?
+  departmentId      String?
+  department        Department? @relation(fields: [departmentId], references: [id])
+  companyId         String
+  company           Company @relation(fields: [companyId], references: [id])
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([companyId, createdAt])
+  @@index([departmentId, createdAt])
+  @@index([status, createdAt])
+}
+
+// Sustainability Goals - Company targets
+model SustainabilityGoal {
+  id                String   @id @default(cuid())
+  title             String
+  description       String?
+  goalType          String   // "emission_reduction", "renewable_energy", "waste_reduction", etc.
+  
+  // Target metrics
+  targetValue       Float    // Target to achieve
+  targetUnit        String   // Unit of target
+  baselineValue     Float?   // Starting point
+  baselineYear      Int?
+  targetYear        Int      // Year to achieve by
+  
+  // Current progress
+  currentValue      Float    @default(0)
+  progressPercent   Float    @default(0)
+  
+  // Status
+  status            String   @default("on_track") // "on_track", "at_risk", "achieved", "missed"
+  
+  // Relationships
+  departmentId      String?
+  department        Department? @relation(fields: [departmentId], references: [id])
+  companyId         String
+  company           Company @relation(fields: [companyId], references: [id])
+  
+  // Notion sync
+  notionPageId      String?  @unique
+  notionSyncedAt    DateTime?
+  notionLastEditedAt DateTime?
+  notionLastEditor  String?
+  notionSyncStatus  String?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+// Monthly/Quarterly Reports
+model Report {
+  id                String   @id @default(cuid())
+  title             String
+  reportType        String   // "gap_analysis", "monthly_summary", "quarterly_review", "annual_report"
+  reportMode        String   @default("internal_management")
+  reportingPeriod   String   // e.g., "2024-03", "2024-Q1"
+  
+  // Content
+  summary           String   // Executive summary
+  totalEmissions    Float    // Total CO2e for period
+  previousPeriodEmissions Float? // For comparison
+  
+  // Gap analysis
+  gapsIdentified    String?  // JSON string of gaps
+  recommendations   String?  // Operational insights and next-step recommendations
+
+  // Methodology & boundary metadata
+  reportingStandard String?
+  gwpBasis          String?
+  factorSourcePolicy String?
+  overridePolicy    String?
+  methodologyNotes  String?
+  boundarySummary   String?
+  boundaryDepartments String? // JSON string of included departments
+  boundaryExclusions String?
+  organizationalBoundaryMethod String?
+  organizationalBoundaryNotes String?
+  reportOwnerName   String?
+  reportOwnerEmail  String?
+  reportReviewerIds String?
+  reportRecipients  String?
+  approvalWorkflow  String?
+  baseYear          Int?
+  baseYearNotes     String?
+  baseYearRecalculationPolicy String?
+  scope2Method      String?
+  scope2LocationBasedEmissions Float?
+  scope2MarketBasedEmissions Float?
+  scope2DisclosureNotes String?
+  scope2InstrumentNotes String?
+  approvalStatus    String   @default("pending_review")
+  approvedByName    String?
+  approvedByEmail   String?
+  approvedAt        DateTime?
+  
+  // Status
+  status            String   @default("draft") // "draft", "published", "archived"
+  
+  // Relationships
+  companyId         String
+  company           Company @relation(fields: [companyId], references: [id])
+  
+  // Notion sync
+  notionPageId      String?  @unique
+  notionSyncedAt    DateTime?
+  notionLastEditedAt DateTime?
+  notionLastEditor  String?
+  notionSyncStatus  String?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  publishedAt       DateTime?
+}
+
+// Compliance Checklist
+model ComplianceChecklist {
+  id                String   @id @default(cuid())
+  title             String
+  description       String?
+  regulation        String?  // e.g., "EU CSRD", "SBTi", "ISO 14001"
+  
+  // Checklist items (stored as JSON)
+  items             String   // JSON array of checklist items
+  
+  // Status
+  completionPercent Float    @default(0)
+  dueDate           DateTime?
+  
+  // Relationships
+  companyId         String
+  company           Company @relation(fields: [companyId], references: [id])
+  
+  // Notion sync
+  notionPageId      String?  @unique
+  notionSyncedAt    DateTime?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+// Notion Integration Configuration
+model NotionConfig {
+  id                String   @id @default(cuid())
+  companyId         String?  @unique
+  company           Company? @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  apiKey            String?  // Encrypted Notion API key
+  databaseIdLedger  String?  // Carbon Ledger database ID
+  databaseIdGoals   String?  // Goals database ID
+  databaseIdReports String?  // Reports database ID
+  databaseIdDepts   String?  // Departments database ID
+  databaseIdKnowledgeBase String? // Knowledge Base database ID
+  workspaceName     String?
+  lastSyncAt        DateTime?
+  lastPullSyncAt    DateTime?
+  lastPushSyncAt    DateTime?
+  syncEnabled       Boolean  @default(true)
+
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+// Agentic Loop Tasks
+model AgentTask {
+  id                String   @id @default(cuid())
+  taskType          String   // "daily_scan", "gap_detection", "report_generation", "anomaly_detection"
+  status            String   @default("pending") // "pending", "running", "completed", "failed"
+  scheduledAt       DateTime
+  startedAt         DateTime?
+  completedAt       DateTime?
+  
+  // Task payload
+  payload           String?  // JSON input payload
+
+  // Results
+  result            String?  // JSON result
+  errorMessage      String?
+  
+  // Retry logic
+  retryCount        Int      @default(0)
+  maxRetries        Int      @default(3)
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  attempts          AgentTaskAttempt[]
+
+  @@index([status, scheduledAt])
+  @@index([taskType, status])
+}
+
+model AgentTaskAttempt {
+  id                String   @id @default(cuid())
+  taskId            String
+  task              AgentTask @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  attemptNumber     Int
+  status            String   @default("running")
+  triggerSource     String?
+  startedAt         DateTime @default(now())
+  completedAt       DateTime?
+  result            String?
+  errorMessage      String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([taskId, startedAt])
+  @@index([taskId, attemptNumber])
+}
+
+// Audit Log
+model AuditLog {
+  id                String   @id @default(cuid())
+  action            String   // "create", "update", "delete", "sync", "calculate"
+  entityType        String   // "carbon_entry", "goal", "report", etc.
+  entityId          String
+  userId            String?
+  user              User?    @relation(fields: [userId], references: [id])
+  details           String?  // JSON details
+  
+  createdAt         DateTime @default(now())
+
+  @@index([userId])
+}
+
+model RateLimitBucket {
+  key       String   @id
+  count     Int
+  resetAt   DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([resetAt])
+}
+
+// EPA Emission Factors Reference
+model EmissionFactor {
+  id                String   @id @default(cuid())
+  sourceType        String   // "electricity", "natural_gas", "diesel", "gasoline", etc.
+  activityUnit      String   // Input unit
+  factor            Float    // kg CO2e per unit
+  factorUnit        String   // Output unit description
+  region            String?  // Geographic region if applicable
+  year              Int      // Year of factor validity
+  source            String?  // EPA document reference
+  sourceFamily      String?
+  methodology       String?
+  gwpBasis          String?
+  description       String?
+  
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  appliedToEntries  CarbonLedgerEntry[] @relation("AppliedEmissionFactor")
+  
+  @@unique([sourceType, activityUnit, region, year])
+}
