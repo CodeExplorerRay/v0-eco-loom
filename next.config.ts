@@ -37,7 +37,7 @@ const securityHeaders = [
       "font-src 'self' data:",
       "connect-src 'self' https://api.notion.com https://www.notion.com https://notion.so https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net https://www.google-analytics.com https://www.googletagmanager.com https://ep1.adtrafficquality.google https://ep2.adtrafficquality.google https://securepubads.g.doubleclick.net",
       "worker-src 'self' blob:",
-      "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://googleads.g.doubleclick.net https://securepubads.g.doubleclick.net",
+      "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://googleads.g.doubleclick.net https://securepubads.g.doubleclick.net https://ep2.adtrafficquality.google https://www.google.com",
       "upgrade-insecure-requests",
     ].join("; "),
   },
