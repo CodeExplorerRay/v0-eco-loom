@@ -46,6 +46,9 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   output: "standalone",
   outputFileTracingRoot: path.resolve(__dirname),
+  turbopack: {
+    root: path.resolve(__dirname),
+  },
   /* config options here */
   typescript: {
     ignoreBuildErrors: true,

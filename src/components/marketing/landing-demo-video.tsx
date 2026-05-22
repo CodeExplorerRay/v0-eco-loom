@@ -11,6 +11,9 @@ export function LandingDemoVideo() {
       return;
     }
 
+    video.loop = true;
+    video.muted = true;
+
     const attemptPlayback = () => {
       void video.play().catch(() => {
         // Ignore autoplay rejections; the element remains muted and loop-ready.
@@ -19,10 +22,12 @@ export function LandingDemoVideo() {
 
     attemptPlayback();
     video.addEventListener('loadeddata', attemptPlayback);
+    video.addEventListener('ended', attemptPlayback);
     document.addEventListener('visibilitychange', attemptPlayback);
 
     return () => {
       video.removeEventListener('loadeddata', attemptPlayback);
+      video.removeEventListener('ended', attemptPlayback);
       document.removeEventListener('visibilitychange', attemptPlayback);
     };
   }, []);
