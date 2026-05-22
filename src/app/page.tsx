@@ -130,7 +130,7 @@ export default function HomePage() {
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           backgroundImage:
-            'radial-gradient(circle at 12% 14%, rgba(74, 222, 128, 0.24), transparent 24%), radial-gradient(circle at 86% 8%, rgba(190, 242, 100, 0.2), transparent 22%), linear-gradient(180deg, #f8fdf9 0%, #edf9f1 30%, #f7fcf8 58%, #ffffff 100%)',
+            'radial-gradient(circle at 12% 14%, rgba(74, 222, 128, 0.24), transparent 24%), radial-gradient(circle at 86% 8%, rgba(190, 242, 100, 0.2), transparent 22%), linear-gradient(180deg, #f8fdf[...]
         }}
       />
       <div
@@ -191,7 +191,7 @@ export default function HomePage() {
 
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 lg:grid-cols-[1.02fr_0.98fr] lg:gap-12 lg:px-8">
           <div className="space-y-8">
-            <div className="inline-flex animate-in fade-in slide-in-from-bottom-4 items-center gap-2 rounded-full border border-green-300/80 bg-white/78 px-4 py-1.5 text-xs font-semibold text-green-700 shadow-sm duration-700">
+            <div className="inline-flex animate-in fade-in slide-in-from-bottom-4 items-center gap-2 rounded-full border border-green-300/80 bg-white/78 px-4 py-1.5 text-xs font-semibold text-green-70[...]
               <span className="h-2 w-2 rounded-full bg-green-600" />
               Carbon operations for modern sustainability teams
             </div>
@@ -247,7 +247,7 @@ export default function HomePage() {
                 return (
                   <div
                     key={item.title}
-                    className="animate-in fade-in slide-in-from-bottom-6 rounded-2xl border border-green-200/80 bg-white/72 p-4 shadow-[0_20px_50px_-35px_rgba(15,23,42,0.4)] backdrop-blur-sm duration-700"
+                    className="animate-in fade-in slide-in-from-bottom-6 rounded-2xl border border-green-200/80 bg-white/72 p-4 shadow-[0_20px_50px_-35px_rgba(15,23,42,0.4)] backdrop-blur-sm dura[...]
                     style={{ animationDelay: `${260 + index * 110}ms` }}
                   >
                     <div className="mb-3 flex items-start justify-between gap-3">
@@ -277,7 +277,7 @@ export default function HomePage() {
                 className="absolute inset-0"
                 style={{
                   backgroundImage:
-                    'radial-gradient(circle at 18% 24%, rgba(167, 243, 208, 0.72), transparent 24%), radial-gradient(circle at 84% 10%, rgba(236, 253, 245, 0.96), transparent 30%), linear-gradient(160deg, rgba(236, 253, 245, 0.96) 0%, rgba(209, 250, 229, 0.88) 48%, rgba(240, 253, 244, 0.92) 100%)',
+                    'radial-gradient(circle at 18% 24%, rgba(167, 243, 208, 0.72), transparent 24%), radial-gradient(circle at 84% 10%, rgba(236, 253, 245, 0.96), transparent 30%), linear-gradien[...]
                 }}
               />
               <div
@@ -368,31 +368,26 @@ export default function HomePage() {
           style={{ animationDelay: '320ms' }}
         >
           <div className="overflow-hidden rounded-[2rem] border border-green-200/80 bg-white/70 shadow-[0_35px_90px_-45px_rgba(21,128,61,0.38)] backdrop-blur-xl">
-            
             <div className="flex items-center justify-between border-b border-green-100 bg-white/80 px-5 py-3 text-sm text-gray-600">
               <div className="flex items-center gap-2">
                 <div className="h-2.5 w-2.5 rounded-full bg-green-500" />
                 Eco-Loom workspace preview
               </div>
-        
               <div className="text-xs font-medium uppercase tracking-[0.18em] text-green-700">
                 Carbon footprint flow
               </div>
             </div>
-        
             <div className="aspect-video w-full">
               <iframe
                 className="h-full w-full"
-                src="https://www.youtube.com/embed/nh4vfntr4SY?autoplay=1&mute=1"
+                src="https://www.youtube.com/embed/nh4vfntr4SY?autoplay=1&mute=1&loop=1&playlist=nh4vfntr4SY"
                 title="Eco-Loom demo video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
             </div>
-        
           </div>
         </div>
-        
       </section>
 
       <section className="relative overflow-hidden bg-white py-20 lg:py-32" id="features">
@@ -505,7 +500,7 @@ export default function HomePage() {
             {proofPoints.map((point, index) => (
               <div
                 key={point.title}
-                className="group flex animate-in fade-in slide-in-from-bottom-6 gap-4 rounded-xl border border-green-200 bg-green-50 p-6 transition-all duration-300 hover:border-green-400 hover:shadow-md"
+                className="group flex animate-in fade-in slide-in-from-bottom-6 gap-4 rounded-xl border border-green-200 bg-green-50 p-6 transition-all duration-300 hover:border-green-400 hover:s[...]
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <Check className="mt-0.5 h-5 w-5 shrink-0 text-green-600" />
