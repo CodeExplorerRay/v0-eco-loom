@@ -387,7 +387,7 @@ export default function HomePage() {
               playsInline
               preload="metadata"
             >
-              <source src="/demo-video/eco-loom-demo.mp4" type="video/mp4" />
+              <source src="https://www.youtube.com/watch?v=nh4vfntr4SY" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
