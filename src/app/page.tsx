@@ -368,30 +368,31 @@ export default function HomePage() {
           style={{ animationDelay: '320ms' }}
         >
           <div className="overflow-hidden rounded-[2rem] border border-green-200/80 bg-white/70 shadow-[0_35px_90px_-45px_rgba(21,128,61,0.38)] backdrop-blur-xl">
+            
             <div className="flex items-center justify-between border-b border-green-100 bg-white/80 px-5 py-3 text-sm text-gray-600">
               <div className="flex items-center gap-2">
                 <div className="h-2.5 w-2.5 rounded-full bg-green-500" />
                 Eco-Loom workspace preview
               </div>
+        
               <div className="text-xs font-medium uppercase tracking-[0.18em] text-green-700">
                 Carbon footprint flow
               </div>
             </div>
-            <video
-              aria-label="Eco-Loom demo video"
-              className="aspect-video w-full"
-              autoPlay
-              controls
-              loop
-              muted
-              playsInline
-              preload="metadata"
-            >
-              <source src="https://www.youtube.com/watch?v=nh4vfntr4SY" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+        
+            <div className="aspect-video w-full">
+              <iframe
+                className="h-full w-full"
+                src="https://www.youtube.com/embed/nh4vfntr4SY?autoplay=1&mute=1"
+                title="Eco-Loom demo video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+        
           </div>
         </div>
+        
       </section>
 
       <section className="relative overflow-hidden bg-white py-20 lg:py-32" id="features">
