@@ -309,26 +309,59 @@ function parseMarkdownPost(content: string) {
   };
 }
 
+function readPostMetadata(markdown: string) {
+  const readField = (name: string) =>
+    markdown.match(new RegExp(`^\\*\\*${name}:\\*\\*\\s*(.+)$`, 'm'))?.[1]?.trim();
+
+  return {
+    category: readField('Topic') ?? 'ESG',
+    date: readField('Publish Date') ?? 'April 1, 2026',
+  };
+}
+
+function createSummary(lead: string) {
+  const normalized = lead.replace(/\s+/g, ' ').trim();
+  if (normalized.length <= 180) return normalized;
+
+  return `${normalized.slice(0, 177).replace(/\s+\S*$/, '')}…`;
+}
+
 function buildBlogPosts(): BlogPost[] {
   const postsDirectory = getPostsDirectory();
+  const curatedPosts = new Map(curatedPostConfigs.map((config) => [config.fileName, config]));
+  const fileNames = fs
+    .readdirSync(postsDirectory)
+    .filter((fileName) => fileName.endsWith('.md'))
+    .sort((left, right) => left.localeCompare(right));
 
-  return curatedPostConfigs.map((config) => {
-    const filePath = path.join(postsDirectory, config.fileName);
-    const markdown = fs.readFileSync(filePath, 'utf8');
+  return fileNames.map((fileName) => {
+    const markdown = fs.readFileSync(path.join(postsDirectory, fileName), 'utf8');
     const parsed = parseMarkdownPost(markdown);
+    const metadata = readPostMetadata(markdown);
+    const curated = curatedPosts.get(fileName);
 
     return {
-      slug: slugFromFileName(config.fileName),
-      date: config.date,
-      category: config.category,
+      slug: slugFromFileName(fileName),
+      date: metadata.date,
+      category: metadata.category,
       title: parsed.title,
-      summary: config.summary,
+      summary: curated?.summary ?? createSummary(parsed.lead),
       readingTime: estimateReadingTime(markdown.replace(/[#*]/g, ' ')),
-      audience: config.audience,
+      audience:
+        curated?.audience ??
+        `For sustainability, finance, and operations teams working on ${metadata.category.toLowerCase()}.`,
       lead: parsed.lead,
       takeaway: parsed.takeaway,
       sections: parsed.sections,
-      engagement: config.engagement,
+      engagement:
+        curated?.engagement ?? {
+          prompt:
+            'Build a clearer, more reliable sustainability reporting workflow with Eco-Loom.',
+          primaryLabel: 'Explore Eco-Loom',
+          primaryHref: '/',
+          secondaryLabel: 'Contact Eco-Loom',
+          secondaryHref: '/contact',
+        },
     };
   });
 }
