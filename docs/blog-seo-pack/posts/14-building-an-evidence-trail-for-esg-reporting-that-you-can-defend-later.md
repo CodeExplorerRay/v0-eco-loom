@@ -1,10 +1,10 @@
 # Building an Evidence Trail for ESG Reporting That You Can Defend Later
 
-ESG Evidence Trail | April 1, 2026 | 4 min read
+ESG Evidence Trail | May 1, 2026 | 4 min read
 
 **Topic:** ESG Evidence Trail
 **Primary Keyword:** ESG evidence trail
-**Publish Date:** April 1, 2026
+**Publish Date:** May 1, 2026
 **Status:** Ready to Publish
 
 A lot of reporting trouble starts with a sentence people do not want to say out loud: “We know the number is right, but we are not fully sure we can show how we got there.”

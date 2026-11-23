@@ -1,10 +1,10 @@
 # What to Do When You Don’t Have Good Supplier Emissions Data
 
-Supplier Emissions Data | April 1, 2026 | 4 min read
+Supplier Emissions Data | February 21, 2026 | 4 min read
 
 **Topic:** Supplier Emissions Data
 **Primary Keyword:** supplier emissions data
-**Publish Date:** April 1, 2026
+**Publish Date:** February 21, 2026
 **Status:** Ready to Publish
 
 Teams talk about supplier emissions data as if it’s sitting there waiting to be collected. Usually it isn’t.

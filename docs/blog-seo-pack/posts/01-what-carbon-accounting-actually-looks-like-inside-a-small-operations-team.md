@@ -1,10 +1,10 @@
 # What Carbon Accounting Actually Looks Like Inside a Small Operations Team
 
-Carbon Accounting | April 1, 2026 | 4 min read
+Carbon Accounting | January 16, 2026 | 4 min read
 
 **Topic:** Carbon Accounting
 **Primary Keyword:** carbon accounting
-**Publish Date:** April 1, 2026
+**Publish Date:** January 16, 2026
 **Status:** Ready to Publish
 
 On paper, carbon accounting sounds tidy. You collect activity data, apply emissions factors, and publish a number. In real life, it usually starts with one person opening four folders, two spreadsheets, a utility invoice PDF, and a Slack thread from three weeks ago.

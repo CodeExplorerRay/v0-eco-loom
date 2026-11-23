@@ -1,10 +1,10 @@
 # How ESG Reporting Breaks When Legal, Finance, and Sustainability Work Separately
 
-ESG Reporting | April 1, 2026 | 4 min read
+ESG Reporting | April 11, 2026 | 4 min read
 
 **Topic:** ESG Reporting
 **Primary Keyword:** ESG reporting
-**Publish Date:** April 1, 2026
+**Publish Date:** April 11, 2026
 **Status:** Ready to Publish
 
 There is a moment in many reporting cycles when everything technically exists but nothing quite connects. Sustainability has the topic context. Finance has the discipline around controls and timing. Legal understands the disclosure risk. And yet the final output still feels fragile.

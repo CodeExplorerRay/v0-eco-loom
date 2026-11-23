@@ -1,10 +1,10 @@
 # How to Prioritize Sustainability Work When Everything Feels Important
 
-Sustainability Prioritization | April 1, 2026 | 4 min read
+Sustainability Prioritization | October 22, 2026 | 4 min read
 
 **Topic:** Sustainability Prioritization
 **Primary Keyword:** prioritize sustainability work
-**Publish Date:** April 1, 2026
+**Publish Date:** October 22, 2026
 **Status:** Ready to Publish
 
 This is one of the hardest parts of ESG work. Once a company starts taking sustainability seriously, the list of legitimate priorities expands fast. Data quality. Supplier engagement. Reporting frameworks. Claims review. Target-setting. Audit readiness. Dashboarding. Governance. Training.

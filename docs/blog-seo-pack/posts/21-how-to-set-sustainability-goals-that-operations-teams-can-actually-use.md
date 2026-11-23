@@ -1,10 +1,10 @@
 # How to Set Sustainability Goals That Operations Teams Can Actually Use
 
-Sustainability Goals | April 1, 2026 | 4 min read
+Sustainability Goals | August 6, 2026 | 4 min read
 
 **Topic:** Sustainability Goals
 **Primary Keyword:** sustainability goals
-**Publish Date:** April 1, 2026
+**Publish Date:** August 6, 2026
 **Status:** Ready to Publish
 
 A goal can look impressive on a slide and still be almost useless in practice. Teams set percentage reductions, long-term targets, or broad net-zero ambitions, then discover that nobody in operations knows what to do with them next Monday.

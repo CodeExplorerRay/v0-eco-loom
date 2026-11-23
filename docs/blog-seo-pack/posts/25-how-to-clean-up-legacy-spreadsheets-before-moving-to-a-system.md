@@ -1,10 +1,10 @@
 # How to Clean Up Legacy Spreadsheets Before Moving to a System
 
-Legacy Spreadsheets | April 1, 2026 | 4 min read
+Legacy Spreadsheets | September 10, 2026 | 4 min read
 
 **Topic:** Legacy Spreadsheets
 **Primary Keyword:** legacy spreadsheets
-**Publish Date:** April 1, 2026
+**Publish Date:** September 10, 2026
 **Status:** Ready to Publish
 
 Almost every sustainability team has at least one spreadsheet that became too important by accident.

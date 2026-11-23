@@ -1,10 +1,10 @@
 # When to Add Tools, When to Stay Manual, and How to Know the Difference
 
-ESG Tooling | April 1, 2026 | 4 min read
+ESG Tooling | October 29, 2026 | 4 min read
 
 **Topic:** ESG Tooling
 **Primary Keyword:** when to add sustainability tools
-**Publish Date:** April 1, 2026
+**Publish Date:** October 29, 2026
 **Status:** Ready to Publish
 
 There is a stage in most sustainability programs where the spreadsheet starts to hurt but the team still is not sure whether it is ready for a proper system.

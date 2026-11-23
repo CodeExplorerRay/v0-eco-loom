@@ -1,10 +1,10 @@
 # What a Materiality Assessment Actually Helps You Decide
 
-Materiality Assessment | April 1, 2026 | 4 min read
+Materiality Assessment | April 6, 2026 | 4 min read
 
 **Topic:** Materiality Assessment
 **Primary Keyword:** materiality assessment
-**Publish Date:** April 1, 2026
+**Publish Date:** April 6, 2026
 **Status:** Ready to Publish
 
 Materiality assessments are often described in a way that makes them sound abstract. Matrixes, stakeholder input, scoring models, prioritization. All of that can be useful, but if a team finishes the process and still cannot decide what to measure, what to disclose, or who needs to be involved, then the exercise has not done its job.

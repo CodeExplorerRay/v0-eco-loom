@@ -1,10 +1,10 @@
 # What Founders Get Wrong About Early ESG Work
 
-Early ESG Strategy | April 1, 2026 | 4 min read
+Early ESG Strategy | October 17, 2026 | 4 min read
 
 **Topic:** Early ESG Strategy
 **Primary Keyword:** early ESG work
-**Publish Date:** April 1, 2026
+**Publish Date:** October 17, 2026
 **Status:** Ready to Publish
 
 Founders are used to moving fast, making imperfect decisions, and fixing things in motion. That mindset can be a strength in ESG work. It can also create avoidable mess if the company treats sustainability like a pitch topic before it treats it like an operating process.

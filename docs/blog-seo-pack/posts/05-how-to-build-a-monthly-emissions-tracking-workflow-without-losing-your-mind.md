@@ -1,10 +1,10 @@
 # How to Build a Monthly Emissions Tracking Workflow Without Losing Your Mind
 
-Emissions Workflow | April 1, 2026 | 4 min read
+Emissions Workflow | February 1, 2026 | 4 min read
 
 **Topic:** Emissions Workflow
 **Primary Keyword:** monthly emissions tracking workflow
-**Publish Date:** April 1, 2026
+**Publish Date:** February 1, 2026
 **Status:** Ready to Publish
 
 A lot of emissions programs sound reasonable in theory and collapse on cadence. The first quarter may look manageable. Then month four arrives, one site misses a submission, the travel export comes late, and a finance review turns up two versions of the same freight file.

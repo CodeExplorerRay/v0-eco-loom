@@ -3,7 +3,14 @@ import { ArrowLeft, Calendar, Clock, User, ArrowRight, Leaf } from 'lucide-react
 import { Button } from '@/components/ui/button';
 import { blogPosts as siteBlogPosts } from '@/lib/marketing/blog-posts';
 
-export default function BlogPage() {
+type BlogPageProps = {
+  searchParams: Promise<{ page?: string }>;
+};
+
+const POSTS_PER_PAGE = 10;
+
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+  const { page: pageParam } = await searchParams;
   const blogPosts = siteBlogPosts.map((post, index) => ({
     id: index + 1,
     slug: post.slug,
@@ -17,6 +24,18 @@ export default function BlogPage() {
   }));
 
   const categories = ['All', ...Array.from(new Set(blogPosts.map((post) => post.category)))];
+  const totalPages = Math.ceil(blogPosts.length / POSTS_PER_PAGE);
+  const requestedPage = Number.parseInt(pageParam ?? '1', 10);
+  const currentPage = Math.min(
+    Math.max(Number.isNaN(requestedPage) ? 1 : requestedPage, 1),
+    totalPages
+  );
+  const pagePosts = blogPosts.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  );
+  const featuredPost = pagePosts.find((post) => post.featured);
+  const pagedPosts = pagePosts.filter((post) => !post.featured);
 
   return (
     <div className="min-h-screen bg-linear-to-b from-white via-green-50 to-emerald-50">
@@ -83,7 +102,7 @@ export default function BlogPage() {
       </section>
 
       {/* Featured Post */}
-      {blogPosts.find(post => post.featured) && (
+      {featuredPost && (
         <section className="py-16 bg-white">
           <div className="mx-auto max-w-6xl px-6 lg:px-8">
             <div className="mb-8">
@@ -92,10 +111,7 @@ export default function BlogPage() {
               </span>
             </div>
             <div className="bg-linear-to-br from-green-50 to-emerald-50 rounded-2xl p-8 lg:p-12">
-              {(() => {
-                const featuredPost = blogPosts.find(post => post.featured)!;
-                return (
-                  <article className="max-w-4xl">
+              <article className="max-w-4xl">
                     <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
                       <span className="px-2 py-1 bg-green-100 text-green-700 rounded text-xs font-medium">
                         {featuredPost.category}
@@ -134,19 +150,17 @@ export default function BlogPage() {
                         </Link>
                       </Button>
                     </div>
-                  </article>
-                );
-              })()}
+              </article>
             </div>
           </div>
         </section>
       )}
 
       {/* Blog Posts Grid */}
-      <section className="py-16 bg-linear-to-b from-white to-green-50">
+      <section id="blog-posts" className="py-16 bg-linear-to-b from-white to-green-50">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.filter(post => !post.featured).map((post) => (
+            {pagedPosts.map((post) => (
               <article key={post.id} className="bg-white rounded-xl shadow-sm border border-green-100 overflow-hidden hover:shadow-md transition-shadow">
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
@@ -195,6 +209,44 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
+
+      <nav aria-label="Blog pagination" className="bg-green-50 pb-16">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-2 px-6 lg:px-8">
+          {currentPage > 1 && (
+            <Button asChild variant="outline" size="sm">
+              <Link href={`/blog?page=${currentPage - 1}#blog-posts`} rel="prev">
+                Previous
+              </Link>
+            </Button>
+          )}
+          {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
+            <Button
+              key={page}
+              asChild
+              variant={page === currentPage ? 'default' : 'outline'}
+              size="sm"
+            >
+              <Link
+                href={`/blog?page=${page}#blog-posts`}
+                aria-current={page === currentPage ? 'page' : undefined}
+                aria-label={`Page ${page}`}
+              >
+                {page}
+              </Link>
+            </Button>
+          ))}
+          {currentPage < totalPages && (
+            <Button asChild variant="outline" size="sm">
+              <Link href={`/blog?page=${currentPage + 1}#blog-posts`} rel="next">
+                Next
+              </Link>
+            </Button>
+          )}
+          <span className="sr-only" aria-live="polite">
+            Page {currentPage} of {totalPages}
+          </span>
+        </div>
+      </nav>
 
       {/* Newsletter Signup */}
       <section className="py-20 lg:py-32 bg-green-600">

@@ -1,10 +1,10 @@
 # What Assurance Readiness Looks Like Before You Hire an Auditor
 
-Assurance Readiness | April 1, 2026 | 4 min read
+Assurance Readiness | May 20, 2026 | 4 min read
 
 **Topic:** Assurance Readiness
 **Primary Keyword:** assurance readiness
-**Publish Date:** April 1, 2026
+**Publish Date:** May 20, 2026
 **Status:** Ready to Publish
 
 Teams often talk about assurance readiness as if it starts when an external reviewer shows up. In practice, the real work starts much earlier.
