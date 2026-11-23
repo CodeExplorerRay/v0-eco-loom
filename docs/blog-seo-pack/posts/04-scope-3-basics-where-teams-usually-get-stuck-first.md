@@ -1,10 +1,10 @@
 # Scope 3 Basics: Where Teams Usually Get Stuck First
 
-Scope 3 | April 1, 2026 | 4 min read
+Scope 3 | January 28, 2026 | 4 min read
 
 **Topic:** Scope 3
 **Primary Keyword:** scope 3 basics
-**Publish Date:** April 1, 2026
+**Publish Date:** January 28, 2026
 **Status:** Ready to Publish
 
 Scope 3 has a reputation for being intimidating, and honestly, that reputation is earned. The issue is not just size. It is that the data sits outside the neat boundaries most companies are used to managing.

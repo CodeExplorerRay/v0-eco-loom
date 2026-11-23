@@ -1,10 +1,10 @@
 # What Internal Carbon Reviews Should Look Like Each Month
 
-Internal Carbon Reviews | April 1, 2026 | 4 min read
+Internal Carbon Reviews | September 2, 2026 | 4 min read
 
 **Topic:** Internal Carbon Reviews
 **Primary Keyword:** internal carbon reviews
-**Publish Date:** April 1, 2026
+**Publish Date:** September 2, 2026
 **Status:** Ready to Publish
 
 Many companies think of carbon review as a quarterly or annual event. Then the deadlines get closer, the questions get sharper, and everyone wishes the team had looked at the data earlier.

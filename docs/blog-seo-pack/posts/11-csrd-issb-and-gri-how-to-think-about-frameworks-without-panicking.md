@@ -1,10 +1,10 @@
 # CSRD, ISSB, and GRI: How to Think About Frameworks Without Panicking
 
-ESG Frameworks | April 1, 2026 | 4 min read
+ESG Frameworks | March 30, 2026 | 4 min read
 
 **Topic:** ESG Frameworks
 **Primary Keyword:** CSRD ISSB GRI
-**Publish Date:** April 1, 2026
+**Publish Date:** March 30, 2026
 **Status:** Ready to Publish
 
 The moment a team starts looking seriously at ESG reporting frameworks, the conversation can go sideways fast. One person says the company needs CSRD readiness. Another says ISSB is the real global baseline. Someone else is more familiar with GRI and does not want to throw away what already exists.

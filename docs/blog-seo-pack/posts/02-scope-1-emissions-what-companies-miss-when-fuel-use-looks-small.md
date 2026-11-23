@@ -1,10 +1,10 @@
 # Scope 1 Emissions: What Companies Miss When Fuel Use Looks Small
 
-Scope 1 Emissions | April 1, 2026 | 4 min read
+Scope 1 Emissions | January 24, 2026 | 4 min read
 
 **Topic:** Scope 1 Emissions
 **Primary Keyword:** scope 1 emissions
-**Publish Date:** April 1, 2026
+**Publish Date:** January 24, 2026
 **Status:** Ready to Publish
 
 Scope 1 often gets treated as the easy part. It’s “your direct emissions,” so people assume it should be straightforward. But that confidence disappears quickly once someone starts asking basic questions like which fuel sources count, how company vehicles are tracked, or whether backup generators were used more than expected last quarter.

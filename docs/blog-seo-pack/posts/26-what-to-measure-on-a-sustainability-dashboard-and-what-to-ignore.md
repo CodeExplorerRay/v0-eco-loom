@@ -1,10 +1,10 @@
 # What to Measure on a Sustainability Dashboard and What to Ignore
 
-Sustainability Dashboards | April 1, 2026 | 4 min read
+Sustainability Dashboards | October 4, 2026 | 4 min read
 
 **Topic:** Sustainability Dashboards
 **Primary Keyword:** sustainability dashboard metrics
-**Publish Date:** April 1, 2026
+**Publish Date:** October 4, 2026
 **Status:** Ready to Publish
 
 When teams build sustainability dashboards, the first instinct is often to include everything. Emissions totals, site filters, trend lines, targets, intensity metrics, category views, review status, maybe even a half-finished score.

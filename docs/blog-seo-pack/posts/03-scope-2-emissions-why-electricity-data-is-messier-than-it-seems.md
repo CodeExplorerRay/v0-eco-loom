@@ -1,10 +1,10 @@
 # Scope 2 Emissions: Why Electricity Data Is Messier Than It Seems
 
-Scope 2 Emissions | April 1, 2026 | 4 min read
+Scope 2 Emissions | January 26, 2026 | 4 min read
 
 **Topic:** Scope 2 Emissions
 **Primary Keyword:** scope 2 emissions
-**Publish Date:** April 1, 2026
+**Publish Date:** January 26, 2026
 **Status:** Ready to Publish
 
 Electricity looks simple when you first describe it. Find the bill. Capture the usage. Apply a factor. Move on.

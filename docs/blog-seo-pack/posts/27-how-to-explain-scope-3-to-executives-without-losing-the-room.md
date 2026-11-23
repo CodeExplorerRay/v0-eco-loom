@@ -1,10 +1,10 @@
 # How to Explain Scope 3 to Executives Without Losing the Room
 
-Executive Communication | April 1, 2026 | 4 min read
+Executive Communication | October 14, 2026 | 4 min read
 
 **Topic:** Executive Communication
 **Primary Keyword:** scope 3 for executives
-**Publish Date:** April 1, 2026
+**Publish Date:** October 14, 2026
 **Status:** Ready to Publish
 
 Scope 3 can make even engaged leadership teams disengage fast if it is explained badly. The category list is long, the data quality varies, and the precision often feels lower than the audience expects.

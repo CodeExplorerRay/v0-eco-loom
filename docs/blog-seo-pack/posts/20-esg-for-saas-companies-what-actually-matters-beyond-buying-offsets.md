@@ -1,10 +1,10 @@
 # ESG for SaaS Companies: What Actually Matters Beyond Buying Offsets
 
-ESG for SaaS | April 1, 2026 | 4 min read
+ESG for SaaS | July 18, 2026 | 4 min read
 
 **Topic:** ESG for SaaS
 **Primary Keyword:** ESG for SaaS companies
-**Publish Date:** April 1, 2026
+**Publish Date:** July 18, 2026
 **Status:** Ready to Publish
 
 SaaS companies often assume ESG will be relatively easy because they do not operate factories or large fleets. In one sense, that is true. The footprint is different. But the simplicity can be misleading.

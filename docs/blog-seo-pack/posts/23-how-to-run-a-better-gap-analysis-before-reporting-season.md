@@ -1,10 +1,10 @@
 # How to Run a Better Gap Analysis Before Reporting Season
 
-Gap Analysis | April 1, 2026 | 4 min read
+Gap Analysis | August 30, 2026 | 4 min read
 
 **Topic:** Gap Analysis
 **Primary Keyword:** gap analysis
-**Publish Date:** April 1, 2026
+**Publish Date:** August 30, 2026
 **Status:** Ready to Publish
 
 Gap analysis sounds like preparation, but a lot of teams use it more like diagnosis after the fact. They discover what is missing, note the problem, and then carry the same weakness into the next cycle.

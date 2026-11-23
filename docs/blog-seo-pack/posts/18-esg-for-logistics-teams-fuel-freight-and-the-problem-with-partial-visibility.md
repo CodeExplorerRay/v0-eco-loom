@@ -1,10 +1,10 @@
 # ESG for Logistics Teams: Fuel, Freight, and the Problem With Partial Visibility
 
-ESG for Logistics | April 1, 2026 | 4 min read
+ESG for Logistics | June 25, 2026 | 4 min read
 
 **Topic:** ESG for Logistics
 **Primary Keyword:** ESG for logistics teams
-**Publish Date:** April 1, 2026
+**Publish Date:** June 25, 2026
 **Status:** Ready to Publish
 
 Logistics businesses live in motion, and their ESG data often reflects that. Some information is detailed and operationally rich. Other pieces are estimated, outsourced, or delayed. And because movement happens across carriers, routes, modes, and geographies, the reporting picture is almost never complete at first pass.

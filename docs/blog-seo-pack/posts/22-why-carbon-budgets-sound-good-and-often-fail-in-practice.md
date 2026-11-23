@@ -1,10 +1,10 @@
 # Why Carbon Budgets Sound Good and Often Fail in Practice
 
-Carbon Budgets | April 1, 2026 | 4 min read
+Carbon Budgets | August 27, 2026 | 4 min read
 
 **Topic:** Carbon Budgets
 **Primary Keyword:** carbon budgets
-**Publish Date:** April 1, 2026
+**Publish Date:** August 27, 2026
 **Status:** Ready to Publish
 
 Carbon budgets sound sensible. If teams manage money with budgets, why not manage emissions the same way?

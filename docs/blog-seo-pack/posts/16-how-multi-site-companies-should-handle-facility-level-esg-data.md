@@ -1,10 +1,10 @@
 # How Multi-Site Companies Should Handle Facility-Level ESG Data
 
-Facility ESG Data | April 1, 2026 | 4 min read
+Facility ESG Data | May 25, 2026 | 4 min read
 
 **Topic:** Facility ESG Data
 **Primary Keyword:** facility-level ESG data
-**Publish Date:** April 1, 2026
+**Publish Date:** May 25, 2026
 **Status:** Ready to Publish
 
 Multi-site companies often think they have one ESG program. In practice, they have a central team trying to interpret six or sixty local operating realities at once.

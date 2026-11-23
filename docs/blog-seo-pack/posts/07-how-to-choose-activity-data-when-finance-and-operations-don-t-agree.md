@@ -1,10 +1,10 @@
 # How to Choose Activity Data When Finance and Operations Don’t Agree
 
-Activity Data | April 1, 2026 | 4 min read
+Activity Data | February 15, 2026 | 4 min read
 
 **Topic:** Activity Data
 **Primary Keyword:** activity data
-**Publish Date:** April 1, 2026
+**Publish Date:** February 15, 2026
 **Status:** Ready to Publish
 
 This happens more often than people admit. Finance has one number. Operations has another. Both sound plausible. Both come from real systems. And now the sustainability team has to decide which one becomes part of the emissions record.

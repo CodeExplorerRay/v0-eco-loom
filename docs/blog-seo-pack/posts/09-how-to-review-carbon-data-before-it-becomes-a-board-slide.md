@@ -1,10 +1,10 @@
 # How to Review Carbon Data Before It Becomes a Board Slide
 
-Carbon Data Review | April 1, 2026 | 4 min read
+Carbon Data Review | February 26, 2026 | 4 min read
 
 **Topic:** Carbon Data Review
 **Primary Keyword:** carbon data review
-**Publish Date:** April 1, 2026
+**Publish Date:** February 26, 2026
 **Status:** Ready to Publish
 
 By the time emissions numbers reach a board deck, it is usually too late to be asking basic questions. Yet that happens all the time.
