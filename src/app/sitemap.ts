@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/lib/marketing/blog-posts";
 
-const siteUrl = "https://eco-loom.com";
+const siteUrl = "https://eco-loom-esg.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
