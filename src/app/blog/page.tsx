@@ -1,16 +1,21 @@
 import Link from 'next/link';
-import { ArrowLeft, Calendar, Clock, User, ArrowRight, Leaf } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, ArrowRight, Leaf } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { blogPosts as siteBlogPosts } from '@/lib/marketing/blog-posts';
 
 type BlogPageProps = {
-  searchParams: Promise<{ page?: string }>;
+  searchParams: Promise<{
+    page?: string | string[];
+    category?: string | string[];
+  }>;
 };
 
 const POSTS_PER_PAGE = 10;
 
 export default async function BlogPage({ searchParams }: BlogPageProps) {
-  const { page: pageParam } = await searchParams;
+  const { page: pageValue, category: categoryValue } = await searchParams;
+  const pageParam = Array.isArray(pageValue) ? pageValue[0] : pageValue;
+  const categoryParam = Array.isArray(categoryValue) ? categoryValue[0] : categoryValue;
   const blogPosts = siteBlogPosts.map((post, index) => ({
     id: index + 1,
     slug: post.slug,
@@ -23,19 +28,31 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
     featured: index === 0,
   }));
 
-  const categories = ['All', ...Array.from(new Set(blogPosts.map((post) => post.category)))];
-  const totalPages = Math.ceil(blogPosts.length / POSTS_PER_PAGE);
+  const categories = ['All topics', ...Array.from(new Set(blogPosts.map((post) => post.category)))];
+  const selectedCategory = categories.includes(categoryParam ?? '')
+    ? categoryParam ?? 'All topics'
+    : 'All topics';
+  const filteredPosts =
+    selectedCategory === 'All topics'
+      ? blogPosts
+      : blogPosts.filter((post) => post.category === selectedCategory);
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
   const requestedPage = Number.parseInt(pageParam ?? '1', 10);
   const currentPage = Math.min(
     Math.max(Number.isNaN(requestedPage) ? 1 : requestedPage, 1),
     totalPages
   );
-  const pagePosts = blogPosts.slice(
+  const pagePosts = filteredPosts.slice(
     (currentPage - 1) * POSTS_PER_PAGE,
     currentPage * POSTS_PER_PAGE
   );
   const featuredPost = pagePosts.find((post) => post.featured);
   const pagedPosts = pagePosts.filter((post) => !post.featured);
+  const pageHref = (page: number) => {
+    const params = new URLSearchParams({ page: String(page) });
+    if (selectedCategory !== 'All topics') params.set('category', selectedCategory);
+    return `/blog?${params.toString()}#blog-posts`;
+  };
 
   return (
     <div className="min-h-screen bg-linear-to-b from-white via-green-50 to-emerald-50">
@@ -74,7 +91,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
           <div className="space-y-6">
             <h1 className="text-4xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-tight">
-              The latest in
+              The latest in{' '}
               <span className="block text-green-700">sustainability & climate tech</span>
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-gray-700 leading-relaxed">
@@ -86,19 +103,27 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       </section>
 
       {/* Category Filter */}
-      <section className="py-8 bg-white border-b border-green-100">
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="flex flex-wrap gap-2 justify-center">
-            {categories.map((category) => (
-              <button
-                key={category}
-                className="px-4 py-2 text-sm font-medium rounded-full border border-green-200 text-green-700 hover:bg-green-50 hover:border-green-300 transition-colors"
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
+      <section className="border-b border-green-100 bg-white py-6">
+        <form action="/blog" method="get" className="mx-auto flex max-w-6xl flex-wrap items-end justify-center gap-3 px-6 lg:px-8">
+          <label className="grid gap-2 text-sm font-medium text-green-900" htmlFor="blog-category">
+            Browse by topic
+            <select
+              id="blog-category"
+              name="category"
+              defaultValue={selectedCategory}
+              className="h-11 min-w-64 rounded-lg border border-green-200 bg-white px-4 text-sm text-gray-800 shadow-sm outline-none transition focus:border-green-500 focus:ring-2 focus:ring-green-200"
+            >
+              {categories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </label>
+          <Button type="submit" className="h-11 bg-green-600 text-white hover:bg-green-700">
+            Apply filter
+          </Button>
+        </form>
       </section>
 
       {/* Featured Post */}
@@ -210,11 +235,12 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         </div>
       </section>
 
-      <nav aria-label="Blog pagination" className="bg-green-50 pb-16">
+      {totalPages > 1 && (
+        <nav aria-label="Blog pagination" className="bg-green-50 pb-16">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-2 px-6 lg:px-8">
           {currentPage > 1 && (
             <Button asChild variant="outline" size="sm">
-              <Link href={`/blog?page=${currentPage - 1}#blog-posts`} rel="prev">
+              <Link href={pageHref(currentPage - 1)} rel="prev">
                 Previous
               </Link>
             </Button>
@@ -227,7 +253,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               size="sm"
             >
               <Link
-                href={`/blog?page=${page}#blog-posts`}
+                href={pageHref(page)}
                 aria-current={page === currentPage ? 'page' : undefined}
                 aria-label={`Page ${page}`}
               >
@@ -237,7 +263,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           ))}
           {currentPage < totalPages && (
             <Button asChild variant="outline" size="sm">
-              <Link href={`/blog?page=${currentPage + 1}#blog-posts`} rel="next">
+              <Link href={pageHref(currentPage + 1)} rel="next">
                 Next
               </Link>
             </Button>
@@ -246,7 +272,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             Page {currentPage} of {totalPages}
           </span>
         </div>
-      </nav>
+        </nav>
+      )}
 
       {/* Newsletter Signup */}
       <section className="py-20 lg:py-32 bg-green-600">
