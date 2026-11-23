@@ -3,6 +3,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://eco-loom.com"),
   title: "Eco-Loom | Autonomous ESG Operations",
   description: "Eco-Loom is an ESG command center for carbon ledger operations, AI-assisted reporting, goal tracking, and Notion-connected compliance workflows.",
   keywords: ["Eco-Loom", "ESG", "carbon ledger", "sustainability reporting", "Notion sync", "compliance dashboard"],
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Eco-Loom",
     description: "Run carbon data ingestion, gap analysis, reporting, and workspace sync from one ESG operations platform.",
-    url: "https://eco-loom.local",
+    url: "https://eco-loom.com",
     siteName: "Eco-Loom",
     type: "website",
   },
