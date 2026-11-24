@@ -2,9 +2,9 @@ import Link from 'next/link';
 import { Leaf } from 'lucide-react';
 
 const productLinks = [
-  { label: 'How it works', href: '/#workflow' },
-  { label: 'Features', href: '/#features' },
-  { label: 'Why Eco-Loom', href: '/#proof' },
+  { label: 'How it works', href: '/how-it-works' },
+  { label: 'Features', href: '/features' },
+  { label: 'Why Eco-Loom', href: '/why-eco-loom' },
 ];
 
 const companyLinks = [

@@ -1,84 +1,19 @@
 import Link from 'next/link';
 import {
   ArrowRight,
-  BarChart3,
   Check,
   Factory,
-  FileText,
   Globe2,
   Leaf,
   MapPin,
-  Target,
-  Upload,
   Wind,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
-const features = [
-  {
-    icon: Upload,
-    title: 'Upload Data',
-    story: 'Start anywhere. Spreadsheets, PDFs, and exports all flow into one cleaner intake.',
-  },
-  {
-    icon: BarChart3,
-    title: 'View Instantly',
-    story:
-      'See your emissions dashboard as soon as data lands so patterns, hotspots, and gaps become visible fast.',
-  },
-  {
-    icon: FileText,
-    title: 'Generate Reports',
-    story:
-      'Create clean stakeholder-ready reports without stitching screenshots, spreadsheets, and docs together.',
-  },
-  {
-    icon: Target,
-    title: 'Track Progress',
-    story:
-      'Set goals, monitor movement, and turn carbon accounting into a repeatable operating habit.',
-  },
-];
-
-const workflowSteps = [
-  {
-    step: '1',
-    title: 'Load',
-    story:
-      'Bring emissions data in from spreadsheets, exports, or internal systems without rebuilding your workflow.',
-  },
-  {
-    step: '2',
-    title: 'Understand',
-    story:
-      'Use a live dashboard to review emissions by source, team, and period and spot the biggest movers.',
-  },
-  {
-    step: '3',
-    title: 'Report',
-    story:
-      'Export polished updates and share progress with leadership, customers, or auditors with less manual effort.',
-  },
-];
-
-const proofPoints = [
-  {
-    title: 'Simple to start',
-    description: 'Upload your first records and get useful output without a long implementation cycle.',
-  },
-  {
-    title: 'Data you own',
-    description: 'Your emissions data stays accessible and exportable instead of being locked behind a black box.',
-  },
-  {
-    title: 'Transparent process',
-    description: 'Track what was captured, how it is organized, and what still needs attention.',
-  },
-  {
-    title: 'Built for action',
-    description: 'Dashboards, reports, and targets stay tied together so teams can actually move on the work.',
-  },
-];
+import {
+  productBenefits,
+  productFeatures,
+  productWorkflowSteps,
+} from '@/lib/marketing/product-content';
 
 const heroHighlights = [
   {
@@ -104,9 +39,9 @@ const heroHighlights = [
 const footprintSignals = ['Energy', 'Travel', 'Freight', 'Waste', 'Water'];
 
 const footerLinks = [
-  { label: 'How it works', href: '/#workflow' },
-  { label: 'Features', href: '/#features' },
-  { label: 'Why Eco-Loom', href: '/#proof' },
+  { label: 'How it works', href: '/how-it-works' },
+  { label: 'Features', href: '/features' },
+  { label: 'Why Eco-Loom', href: '/why-eco-loom' },
 ];
 
 const companyFooterLinks = [
@@ -152,16 +87,16 @@ export default function HomePage() {
             <span className="text-lg font-bold text-green-900">Eco-Loom</span>
           </Link>
 
-          <nav className="hidden items-center gap-10 text-sm text-gray-600 lg:flex">
-            <a className="font-medium transition hover:text-green-700" href="#workflow">
+          <nav className="hidden items-center gap-10 text-sm text-gray-600 min-[960px]:flex">
+            <Link className="font-medium transition hover:text-green-700" href="/how-it-works">
               How it works
-            </a>
-            <a className="font-medium transition hover:text-green-700" href="#features">
+            </Link>
+            <Link className="font-medium transition hover:text-green-700" href="/features">
               Features
-            </a>
-            <a className="font-medium transition hover:text-green-700" href="#proof">
+            </Link>
+            <Link className="font-medium transition hover:text-green-700" href="/why-eco-loom">
               Why Eco-Loom
-            </a>
+            </Link>
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
@@ -410,7 +345,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {features.map((feature, index) => {
+            {productFeatures.map((feature, index) => {
               const Icon = feature.icon;
 
               return (
@@ -423,7 +358,7 @@ export default function HomePage() {
                     <Icon className="h-6 w-6 text-green-700" />
                   </div>
                   <h3 className="mb-2 text-lg font-bold text-gray-900">{feature.title}</h3>
-                  <p className="font-medium leading-relaxed text-gray-600">{feature.story}</p>
+                  <p className="font-medium leading-relaxed text-gray-600">{feature.description}</p>
                 </div>
               );
             })}
@@ -453,7 +388,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-3">
-            {workflowSteps.map((item, index) => (
+            {productWorkflowSteps.map((item, index) => (
               <div
                 key={item.step}
                 className="relative animate-in fade-in slide-in-from-bottom-6"
@@ -464,9 +399,9 @@ export default function HomePage() {
                     {item.step}
                   </div>
                   <h3 className="mb-3 text-xl font-bold text-gray-900">{item.title}</h3>
-                  <p className="font-medium leading-relaxed text-gray-600">{item.story}</p>
+                  <p className="font-medium leading-relaxed text-gray-600">{item.description}</p>
                 </div>
-                {index < workflowSteps.length - 1 ? (
+                {index < productWorkflowSteps.length - 1 ? (
                   <div className="absolute -right-4 top-1/2 hidden -translate-y-1/2 md:block">
                     <ArrowRight className="h-6 w-6 text-green-300" />
                   </div>
@@ -497,7 +432,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
-            {proofPoints.map((point, index) => (
+            {productBenefits.map((point, index) => (
               <div
                 key={point.title}
                 className="group flex animate-in fade-in slide-in-from-bottom-6 gap-4 rounded-xl border border-green-200 bg-green-50 p-6 transition-all duration-300 hover:border-green-400 hover:shadow-lg"

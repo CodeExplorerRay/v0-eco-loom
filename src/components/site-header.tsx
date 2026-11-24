@@ -13,14 +13,14 @@ export function SiteHeader() {
           <span className="text-[17px] font-semibold tracking-tight text-green-950">Eco-Loom</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm text-gray-600 lg:flex">
-          <Link className="font-medium transition-colors hover:text-green-700" href="/#workflow">
+        <nav className="hidden items-center gap-8 text-sm text-gray-600 min-[960px]:flex">
+          <Link className="font-medium transition-colors hover:text-green-700" href="/how-it-works">
             How it works
           </Link>
-          <Link className="font-medium transition-colors hover:text-green-700" href="/#features">
+          <Link className="font-medium transition-colors hover:text-green-700" href="/features">
             Features
           </Link>
-          <Link className="font-medium transition-colors hover:text-green-700" href="/#proof">
+          <Link className="font-medium transition-colors hover:text-green-700" href="/why-eco-loom">
             Why Eco-Loom
           </Link>
         </nav>
