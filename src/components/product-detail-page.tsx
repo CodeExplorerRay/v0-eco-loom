@@ -31,20 +31,6 @@ export function ProductDetailPage({
       <SiteHeader />
       <main className="min-h-screen bg-linear-to-b from-white via-green-50 to-emerald-50 pt-28 text-gray-900">
         <section className="mx-auto max-w-6xl px-6 py-16 lg:px-8 lg:py-24">
-          <nav aria-label="Breadcrumb" className="mb-10 text-sm font-medium text-gray-500">
-            <ol className="flex items-center gap-2">
-              <li>
-                <Link className="transition-colors hover:text-green-700" href="/">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden="true">/</li>
-              <li aria-current="page" className="text-green-800">
-                {eyebrow}
-              </li>
-            </ol>
-          </nav>
-
           <header className="mx-auto max-w-3xl text-center">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-green-700">
               {eyebrow}
