@@ -19,20 +19,20 @@ const heroHighlights = [
   {
     icon: MapPin,
     value: 'Multi-site',
-    title: 'Facility-aware visibility',
-    story: 'Track footprint movement across plants, hubs, offices, and labs in one workspace.',
+    title: 'See every site clearly',
+    story: 'Compare plant, office, hub, and lab emissions from one portfolio-wide dashboard.',
   },
   {
     icon: Globe2,
-    value: 'Scope 1-3',
-    title: 'Carbon coverage that connects',
-    story: 'Bring operational activity, emissions factors, and reporting outputs into one flow.',
+    value: 'Scope 1–3',
+    title: 'One connected inventory',
+    story: 'Bring activity data and emissions factors together for a clearer Scope 1–3 carbon inventory.',
   },
   {
     icon: Wind,
-    value: 'Faster action',
-    title: 'From data intake to reporting',
-    story: 'Move from source records to dashboards, goals, and reports without spreadsheet drift.',
+    value: 'One workspace',
+    title: 'From data to decisions',
+    story: 'Upload source files, review emissions trends, track reduction goals, and prepare stakeholder-ready reports.',
   },
 ];
 
