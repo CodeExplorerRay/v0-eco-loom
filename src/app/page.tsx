@@ -104,8 +104,8 @@ const heroHighlights = [
 const footprintSignals = ['Energy', 'Travel', 'Freight', 'Waste', 'Water'];
 
 const footerLinks = [
-  { label: 'How it works', href: '/#features' },
-  { label: 'Features', href: '/#workflow' },
+  { label: 'How it works', href: '/#workflow' },
+  { label: 'Features', href: '/#features' },
   { label: 'Why Eco-Loom', href: '/#proof' },
 ];
 
@@ -153,14 +153,14 @@ export default function HomePage() {
           </Link>
 
           <nav className="hidden items-center gap-10 text-sm text-gray-600 lg:flex">
-            <a className="font-medium transition hover:text-green-700" href="#features">
+            <a className="font-medium transition hover:text-green-700" href="#workflow">
               How it works
             </a>
-            <a className="font-medium transition hover:text-green-700" href="#workflow">
+            <a className="font-medium transition hover:text-green-700" href="#features">
               Features
             </a>
             <a className="font-medium transition hover:text-green-700" href="#proof">
-              Why use it
+              Why Eco-Loom
             </a>
           </nav>
 
@@ -565,15 +565,9 @@ export default function HomePage() {
               <ul className="space-y-2 text-sm text-gray-600">
                 {footerLinks.map((link) => (
                   <li key={link.label}>
-                    {link.href.startsWith('/#') ? (
-                      <a className="transition hover:text-green-700" href={link.href}>
-                        {link.label}
-                      </a>
-                    ) : (
-                      <Link className="transition hover:text-green-700" href={link.href}>
-                        {link.label}
-                      </Link>
-                    )}
+                    <Link className="transition hover:text-green-700" href={link.href}>
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>

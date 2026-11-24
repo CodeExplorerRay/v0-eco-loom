@@ -14,15 +14,15 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm text-gray-600 lg:flex">
-          <a className="font-medium transition-colors hover:text-green-700" href="/#features">
+          <Link className="font-medium transition-colors hover:text-green-700" href="/#workflow">
             How it works
-          </a>
-          <a className="font-medium transition-colors hover:text-green-700" href="/#workflow">
+          </Link>
+          <Link className="font-medium transition-colors hover:text-green-700" href="/#features">
             Features
-          </a>
-          <a className="font-medium transition-colors hover:text-green-700" href="/#proof">
-            Why use it
-          </a>
+          </Link>
+          <Link className="font-medium transition-colors hover:text-green-700" href="/#proof">
+            Why Eco-Loom
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
