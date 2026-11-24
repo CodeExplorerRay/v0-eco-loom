@@ -2,9 +2,9 @@ import Link from 'next/link';
 import { Leaf } from 'lucide-react';
 
 const productLinks = [
-  { label: 'How it works', href: '/#features' },
-  { label: 'Features', href: '/#workflow' },
-  { label: 'Why Eco-Loom', href: '/#proof' },
+  { label: 'How it works', href: '/how-it-works' },
+  { label: 'Features', href: '/features' },
+  { label: 'Why Eco-Loom', href: '/why-eco-loom' },
 ];
 
 const companyLinks = [
@@ -43,15 +43,9 @@ export function SiteFooter() {
             <ul className="space-y-2.5 text-sm text-gray-600">
               {productLinks.map((link) => (
                 <li key={link.label}>
-                  {link.href.startsWith('/#') ? (
-                    <a className="font-medium transition-colors hover:text-green-700" href={link.href}>
-                      {link.label}
-                    </a>
-                  ) : (
-                    <Link className="font-medium transition-colors hover:text-green-700" href={link.href}>
-                      {link.label}
-                    </Link>
-                  )}
+                  <Link className="font-medium transition-colors hover:text-green-700" href={link.href}>
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
