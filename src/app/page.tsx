@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -5,8 +6,6 @@ import {
   Factory,
   Globe2,
   Leaf,
-  MapPin,
-  Wind,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -17,26 +16,24 @@ import {
 
 const heroHighlights = [
   {
-    icon: MapPin,
+    icon: Factory,
     value: 'Multi-site',
-    title: 'See every site clearly',
-    story: 'Compare plant, office, hub, and lab emissions from one portfolio-wide dashboard.',
+    title: 'Facility-aware visibility',
+    story: 'Track footprint movement across plants, hubs, offices, and labs in one workspace.',
   },
   {
     icon: Globe2,
     value: 'Scope 1–3',
-    title: 'One connected inventory',
-    story: 'Bring activity data and emissions factors together for a clearer Scope 1–3 carbon inventory.',
+    title: 'Carbon coverage that connects',
+    story: 'Bring operational activity, emissions factors, and reporting outputs into one flow.',
   },
   {
-    icon: Wind,
-    value: 'One workspace',
-    title: 'From data to decisions',
-    story: 'Upload source files, review emissions trends, track reduction goals, and prepare stakeholder-ready reports.',
+    icon: ArrowRight,
+    value: 'Faster action',
+    title: 'From data intake to reporting',
+    story: 'Move from source records to dashboards, goals, and reports without spreadsheet drift.',
   },
 ];
-
-const footprintSignals = ['Energy', 'Travel', 'Freight', 'Waste', 'Water'];
 
 const footerLinks = [
   { label: 'How it works', href: '/how-it-works' },
@@ -124,7 +121,7 @@ export default function HomePage() {
           <div className="absolute bottom-0 left-1/4 h-[28rem] w-[28rem] rounded-full bg-emerald-100/35 blur-3xl opacity-70" />
         </div>
 
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 lg:grid-cols-[1.02fr_0.98fr] lg:gap-12 lg:px-8">
+        <div className="mx-auto grid max-w-7xl items-start gap-10 px-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12 lg:px-8">
           <div className="space-y-8">
             <div className="inline-flex animate-in fade-in slide-in-from-bottom-4 items-center gap-2 rounded-full border border-green-300/80 bg-white/78 px-4 py-1.5 text-xs font-semibold text-green-700">
               <span className="h-2 w-2 rounded-full bg-green-600" />
@@ -139,17 +136,13 @@ export default function HomePage() {
                 <p className="text-sm font-semibold uppercase tracking-[0.22em] text-green-700">
                   For teams committed to sustainability
                 </p>
-                <h1 className="max-w-3xl text-5xl font-bold leading-tight tracking-tight text-gray-900 lg:text-6xl">
-                  Measure your carbon footprint.
+                <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+                  Carbon visibility for every site.
                 </h1>
-                <h2 className="text-5xl font-bold text-green-700 lg:text-6xl">
-                  Make it visible.
-                </h2>
               </div>
               <p className="max-w-2xl text-lg font-medium leading-relaxed text-gray-700">
-                Eco-Loom helps your team capture, track, and understand carbon emissions without
-                spreadsheet chaos. Bring records in, see what matters, and move from reporting to
-                action in one place.
+                Bring facility activity, Scope 1–3 carbon coverage, and reporting together. Move from
+                source data to action without spreadsheet drift.
               </p>
             </div>
 
@@ -175,127 +168,64 @@ export default function HomePage() {
               </Button>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-3">
-              {heroHighlights.map((item, index) => {
-                const Icon = item.icon;
-
-                return (
-                  <div
-                    key={item.title}
-                    className="animate-in fade-in slide-in-from-bottom-6 rounded-2xl border border-green-200/80 bg-white/72 p-4 shadow-[0_20px_50px_-35px_rgba(15,23,42,0.4)] backdrop-blur-sm duration-700"
-                    style={{ animationDelay: `${260 + index * 110}ms` }}
-                  >
-                    <div className="mb-3 flex items-start justify-between gap-3">
-                      <div>
-                        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-green-700">
-                          {item.value}
-                        </p>
-                        <p className="mt-1 text-base font-semibold text-gray-900">{item.title}</p>
-                      </div>
-                      <div className="rounded-2xl bg-green-50 p-2.5 text-green-700 shadow-sm">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                    </div>
-                    <p className="text-sm leading-relaxed text-gray-600">{item.story}</p>
-                  </div>
-                );
-              })}
-            </div>
           </div>
 
           <div
             className="animate-in fade-in slide-in-from-right-8 duration-700"
             style={{ animationDelay: '180ms' }}
           >
-            <div className="relative min-h-[480px] overflow-hidden rounded-[2rem] border border-emerald-200/80 bg-white/56 shadow-[0_40px_120px_-50px_rgba(21,128,61,0.42)] backdrop-blur-xl">
-              <div
-                className="absolute inset-0"
-                style={{
-                  backgroundImage:
-                    'radial-gradient(circle at 18% 24%, rgba(167, 243, 208, 0.72), transparent 24%), radial-gradient(circle at 84% 10%, rgba(236, 253, 245, 0.96), transparent 30%), linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0))'
-                }}
-              />
-              <div
-                className="absolute inset-0 opacity-30"
-                style={{
-                  backgroundImage:
-                    'linear-gradient(rgba(16, 185, 129, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(16, 185, 129, 0.08) 1px, transparent 1px)',
-                  backgroundSize: '72px 72px',
-                }}
-              />
-
-              <div className="absolute left-8 top-8 flex flex-wrap gap-2">
-                {footprintSignals.map((signal, index) => (
-                  <div
-                    key={signal}
-                    className="rounded-full border border-white/70 bg-white/88 px-3 py-1 text-xs font-medium text-slate-700 shadow-md"
-                    style={{ transform: `translateY(${index % 2 === 0 ? 0 : 8}px)` }}
-                  >
-                    {signal}
-                  </div>
-                ))}
+            <figure className="overflow-hidden rounded-[1.75rem] border border-emerald-200/80 bg-white p-2 shadow-[0_40px_120px_-50px_rgba(21,128,61,0.42)]">
+              <div className="flex items-center justify-between gap-3 border-b border-green-100 px-3 py-2.5 text-xs font-medium text-gray-600 sm:px-4">
+                <span className="flex items-center gap-2">
+                  <span aria-hidden="true" className="h-2 w-2 rounded-full bg-green-500" />
+                  Eco-Loom dashboard
+                </span>
+                <span className="rounded-full bg-green-50 px-2.5 py-1 text-green-800">
+                  Actual product view
+                </span>
               </div>
-
-              <div className="absolute right-8 top-20 w-56 rounded-3xl border border-white/70 bg-white/88 p-4 shadow-xl">
-                <div className="mb-3 flex items-center gap-3">
-                  <div className="rounded-2xl bg-lime-100 p-2.5 text-lime-700">
-                    <Wind className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-lime-700">
-                      Carbon signal
-                    </p>
-                    <p className="text-sm font-semibold text-slate-900">See hotspots before they compound</p>
-                  </div>
-                </div>
-                <p className="text-xs leading-relaxed text-slate-600">
-                  Turn incoming activity into a cleaner sustainability operating picture across every site.
-                </p>
+              <div className="relative aspect-[1.08] overflow-hidden rounded-b-[1.25rem] bg-green-50">
+                <Image
+                  alt="Eco-Loom dashboard showing facility scope, carbon metrics, emissions by scope, facility comparison, and reporting activity."
+                  className="object-cover object-top"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  src="/eco-loom-dashboard-hero.png"
+                />
               </div>
-
-              <div className="absolute bottom-[5.5rem] left-8 w-64 rounded-3xl border border-white/75 bg-white/92 p-4 shadow-xl">
-                <div className="mb-3 flex items-center gap-3">
-                  <div className="rounded-2xl bg-emerald-100 p-2.5 text-emerald-700">
-                    <Factory className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-700">
-                      Facility pulse
-                    </p>
-                    <p className="text-sm font-semibold text-slate-900">Operational carbon visibility</p>
-                  </div>
-                </div>
-                <div className="grid gap-2 text-xs text-slate-600">
-                  <div className="flex items-center justify-between rounded-2xl bg-emerald-50 px-3 py-2">
-                    <span>Emissions intake</span>
-                    <span className="font-semibold text-emerald-700">Live</span>
-                  </div>
-                  <div className="flex items-center justify-between rounded-2xl bg-white px-3 py-2 shadow-sm">
-                    <span>Site reporting</span>
-                    <span className="font-semibold text-slate-900">Audit-ready</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute inset-x-10 top-16 h-24 rounded-full border border-emerald-300/35" />
-              <div className="absolute inset-x-[4.5rem] top-24 h-24 rounded-full border border-emerald-300/20" />
-              <div className="absolute left-16 top-28 h-20 w-20 rounded-full bg-lime-200/80 blur-2xl" />
-              <div className="absolute right-20 top-14 h-16 w-16 rounded-full bg-emerald-200/85 blur-xl" />
-
-              <div className="absolute inset-x-0 bottom-0 h-[58%] bg-gradient-to-t from-emerald-50 via-emerald-100/70 to-transparent" />
-              <div className="absolute -bottom-10 left-[-3%] h-48 w-[62%] rounded-[50%] bg-emerald-500/26" />
-              <div className="absolute -bottom-8 right-[-2%] h-52 w-[68%] rounded-[50%] bg-emerald-700/18" />
-              <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-emerald-950/10 to-transparent" />
-
-              <div className="absolute bottom-0 left-1/2 flex w-[78%] -translate-x-1/2 items-end gap-2">
-                <div className="h-14 flex-1 rounded-t-[1.75rem] bg-slate-900/76" />
-                <div className="h-24 w-16 rounded-t-[1.5rem] bg-slate-900/82" />
-                <div className="h-16 w-10 rounded-t-[1rem] bg-slate-900/70" />
-                <div className="h-28 w-20 rounded-t-[1.5rem] bg-slate-900/86" />
-                <div className="h-[4.5rem] w-12 rounded-t-[1rem] bg-slate-900/74" />
-              </div>
-            </div>
+              <figcaption className="sr-only">
+                Genuine screenshot of the Eco-Loom dashboard interface.
+              </figcaption>
+            </figure>
           </div>
+        </div>
+
+        <div className="mx-auto mt-12 grid max-w-7xl gap-4 px-6 md:grid-cols-3 lg:px-8">
+          {heroHighlights.map((item, index) => {
+            const Icon = item.icon;
+
+            return (
+              <article
+                key={item.title}
+                className="animate-in fade-in slide-in-from-bottom-6 rounded-2xl border border-green-200/80 bg-white/80 p-5 shadow-[0_20px_50px_-35px_rgba(15,23,42,0.4)] backdrop-blur-sm duration-700"
+                style={{ animationDelay: `${260 + index * 110}ms` }}
+              >
+                <div className="mb-3 flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-green-700">
+                      {item.value}
+                    </p>
+                    <h2 className="mt-1 text-base font-semibold text-gray-900">{item.title}</h2>
+                  </div>
+                  <div className="rounded-2xl bg-green-50 p-2.5 text-green-700 shadow-sm">
+                    <Icon aria-hidden="true" className="h-5 w-5" />
+                  </div>
+                </div>
+                <p className="text-sm leading-relaxed text-gray-600">{item.story}</p>
+              </article>
+            );
+          })}
         </div>
 
         <div
