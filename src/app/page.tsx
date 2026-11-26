@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -13,6 +14,13 @@ import {
   productFeatures,
   productWorkflowSteps,
 } from '@/lib/marketing/product-content';
+
+export const metadata: Metadata = {
+  title: 'Eco-Loom | Carbon Accounting & ESG Operations',
+  description:
+    'Bring facility activity, Scope 1–3 emissions, and sustainability reporting together with Eco-Loom’s carbon accounting workspace.',
+  alternates: { canonical: '/' },
+};
 
 const heroHighlights = [
   {

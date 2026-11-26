@@ -1,6 +1,14 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Mail, MessageSquare, Phone, MapPin, Send, Leaf } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
+export const metadata: Metadata = {
+  title: 'Contact Eco-Loom',
+  description:
+    'Contact Eco-Loom to discuss carbon accounting, emissions tracking, and sustainability reporting for your organization.',
+  alternates: { canonical: '/contact' },
+};
 
 export default function ContactPage() {
   return (

@@ -1,0 +1,20 @@
+# Eco-Loom
+
+> Eco-Loom is a carbon accounting and ESG operations platform that helps sustainability teams organize emissions data, track Scope 1–3 activity, and prepare useful reporting.
+
+## Public pages
+- [Home](https://eco-loom-esg.vercel.app/): Carbon visibility for every site.
+- [Features](https://eco-loom-esg.vercel.app/features): Emissions data intake, dashboards, stakeholder reporting, and progress tracking.
+- [How it works](https://eco-loom-esg.vercel.app/how-it-works): The emissions data-to-action workflow.
+- [Why Eco-Loom](https://eco-loom-esg.vercel.app/why-eco-loom): Product approach and benefits.
+- [Pricing](https://eco-loom-esg.vercel.app/pricing): Plans and pricing information.
+- [About](https://eco-loom-esg.vercel.app/about): About Eco-Loom.
+- [Contact](https://eco-loom-esg.vercel.app/contact): Contact information.
+- [Blog](https://eco-loom-esg.vercel.app/blog): Carbon accounting and sustainability guidance.
+- [Privacy](https://eco-loom-esg.vercel.app/privacy): Privacy policy.
+- [Terms](https://eco-loom-esg.vercel.app/terms): Terms of service.
+- [Security](https://eco-loom-esg.vercel.app/security): Security overview.
+
+## Crawl resources
+- [XML sitemap](https://eco-loom-esg.vercel.app/sitemap.xml)
+- [Robots instructions](https://eco-loom-esg.vercel.app/robots.txt)

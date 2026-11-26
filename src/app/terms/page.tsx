@@ -1,6 +1,13 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, FileText, Scale, Leaf } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
+export const metadata: Metadata = {
+  title: 'Terms of Service',
+  description: 'Read the terms that apply when using the Eco-Loom platform and services.',
+  alternates: { canonical: '/terms' },
+};
 
 export default function TermsPage() {
   return (

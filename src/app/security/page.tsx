@@ -1,6 +1,13 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Shield, Lock, Key, Database, Users, AlertTriangle, Leaf } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
+export const metadata: Metadata = {
+  title: 'Security Overview',
+  description: 'Review the security controls and data protection practices used by Eco-Loom.',
+  alternates: { canonical: '/security' },
+};
 
 export default function SecurityPage() {
   return (

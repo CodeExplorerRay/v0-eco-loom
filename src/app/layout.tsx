@@ -4,25 +4,52 @@ import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://eco-loom-esg.vercel.app"),
-  title: "Eco-Loom | Autonomous ESG Operations",
-  description: "Eco-Loom is an ESG command center for carbon ledger operations, AI-assisted reporting, goal tracking, and Notion-connected compliance workflows.",
-  keywords: ["Eco-Loom", "ESG", "carbon ledger", "sustainability reporting", "Notion sync", "compliance dashboard"],
-  authors: [{ name: "Eco-Loom" }],
-  icons: {
-    icon: "/logo.svg",
+  title: {
+    default: "Eco-Loom | Carbon Accounting & ESG Operations",
+    template: "%s | Eco-Loom",
   },
+  description: "Eco-Loom helps sustainability teams manage emissions data, carbon accounting, goals, and ESG reporting in one operational workspace.",
+  keywords: ["Eco-Loom", "ESG", "carbon accounting", "emissions tracking", "sustainability reporting", "carbon ledger"],
+  authors: [{ name: "Eco-Loom" }],
+  alternates: { canonical: "/" },
+  icons: { icon: "/logo.svg" },
   openGraph: {
-    title: "Eco-Loom",
-    description: "Run carbon data ingestion, gap analysis, reporting, and workspace sync from one ESG operations platform.",
-    url: "https://eco-loom-esg.vercel.app",
+    title: "Eco-Loom | Carbon Accounting & ESG Operations",
+    description: "Manage emissions data, carbon accounting, goals, and ESG reporting in one operational workspace.",
+    url: "https://eco-loom-esg.vercel.app/",
     siteName: "Eco-Loom",
     type: "website",
+    images: [{ url: "/eco-loom-og.webp", width: 1424, height: 752, alt: "Eco-Loom carbon accounting and ESG operations" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Eco-Loom",
-    description: "Autonomous ESG operations for ingestion, carbon accounting, reporting, and sync.",
+    title: "Eco-Loom | Carbon Accounting & ESG Operations",
+    description: "Manage emissions data, carbon accounting, goals, and ESG reporting in one workspace.",
+    images: ["/eco-loom-og.webp"],
   },
+};
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://eco-loom-esg.vercel.app/#organization',
+      name: 'Eco-Loom',
+      url: 'https://eco-loom-esg.vercel.app/',
+      logo: 'https://eco-loom-esg.vercel.app/logo.svg',
+      description:
+        'Eco-Loom helps sustainability teams manage emissions data, carbon accounting, goals, and ESG reporting.',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://eco-loom-esg.vercel.app/#website',
+      name: 'Eco-Loom',
+      url: 'https://eco-loom-esg.vercel.app/',
+      publisher: { '@id': 'https://eco-loom-esg.vercel.app/#organization' },
+      inLanguage: 'en',
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -40,6 +67,12 @@ export default function RootLayout({
         ></script>
       </head>
       <body className="antialiased bg-background text-foreground">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
+          }}
+        />
         {children}
         <Toaster />
       </body>

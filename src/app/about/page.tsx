@@ -1,6 +1,14 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Users, Target, Leaf, Award, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
+export const metadata: Metadata = {
+  title: 'About',
+  description:
+    'Learn about Eco-Loom’s mission to make sustainability data visible, trustworthy, and actionable for every team.',
+  alternates: { canonical: '/about' },
+};
 
 export default function AboutPage() {
   return (

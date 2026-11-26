@@ -24,7 +24,7 @@ const screenshots = [
   {
     title: 'Carbon dashboard',
     caption: 'Facility scope, emissions, goals, and activity in one view.',
-    src: '/eco-loom-dashboard-hero.png',
+    src: '/eco-loom-dashboard-hero.webp',
     alt: 'Eco-Loom dashboard showing facility scope, carbon metrics, emissions by scope, facility comparison, and reporting activity.',
     width: 2560,
     height: 5208,
@@ -33,7 +33,7 @@ const screenshots = [
   {
     title: 'Emissions by category',
     caption: 'Inspect Scope 1, 2, and 3 totals and verification status.',
-    src: '/eco-loom-emissions-detail.png',
+    src: '/eco-loom-emissions-detail.webp',
     alt: 'Emissions by Category Details showing Scope 1, 2, and 3 totals, verification status, pending review, and ledger rows.',
     width: 1286,
     height: 725,
@@ -42,7 +42,7 @@ const screenshots = [
   {
     title: 'Data ingest',
     caption: 'Upload evidence, enter activity, or import a CSV.',
-    src: '/eco-loom-data-ingest.png',
+    src: '/eco-loom-data-ingest.webp',
     alt: 'Eco-Loom Data Ingest page showing evidence upload, manual entry, CSV import, and recent ingest activity.',
     width: 2560,
     height: 2384,

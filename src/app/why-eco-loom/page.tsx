@@ -3,9 +3,10 @@ import { ProductDetailPage } from '@/components/product-detail-page';
 import { productBenefits } from '@/lib/marketing/product-content';
 
 export const metadata: Metadata = {
-  title: 'Why Eco-Loom | Eco-Loom',
+  title: 'Why Choose Eco-Loom',
   description:
     'Learn how Eco-Loom makes sustainability tracking easier to start, transparent to review, and practical to act on.',
+  alternates: { canonical: '/why-eco-loom' },
 };
 
 export default function WhyEcoLoomPage() {

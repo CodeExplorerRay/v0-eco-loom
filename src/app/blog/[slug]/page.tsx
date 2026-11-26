@@ -26,8 +26,17 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   return {
-    title: `${post.title} | Eco-Loom`,
-    description: post.summary,
+      title: post.title,
+      description: post.summary,
+      alternates: { canonical: `/blog/${post.slug}` },
+      openGraph: {
+        title: post.title,
+        description: post.summary,
+        url: `/blog/${post.slug}`,
+        siteName: 'Eco-Loom',
+        type: 'article',
+        images: [{ url: '/eco-loom-og.webp', width: 1424, height: 752, alt: 'Eco-Loom sustainability journal' }],
+      },
   };
 }
 
