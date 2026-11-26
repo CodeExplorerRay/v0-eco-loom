@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -7,12 +7,20 @@ import {
   Globe2,
   Leaf,
 } from 'lucide-react';
+import { ProductScreenshotCarousel } from '@/components/marketing/product-preview-carousel';
 import { Button } from '@/components/ui/button';
 import {
   productBenefits,
   productFeatures,
   productWorkflowSteps,
 } from '@/lib/marketing/product-content';
+
+export const metadata: Metadata = {
+  title: 'Eco-Loom | Carbon Accounting & ESG Operations',
+  description:
+    'Bring facility activity, Scope 1–3 emissions, and sustainability reporting together with Eco-Loom’s carbon accounting workspace.',
+  alternates: { canonical: '/' },
+};
 
 const heroHighlights = [
   {
@@ -174,30 +182,7 @@ export default function HomePage() {
             className="animate-in fade-in slide-in-from-right-8 duration-700"
             style={{ animationDelay: '180ms' }}
           >
-            <figure className="overflow-hidden rounded-[1.75rem] border border-emerald-200/80 bg-white p-2 shadow-[0_40px_120px_-50px_rgba(21,128,61,0.42)]">
-              <div className="flex items-center justify-between gap-3 border-b border-green-100 px-3 py-2.5 text-xs font-medium text-gray-600 sm:px-4">
-                <span className="flex items-center gap-2">
-                  <span aria-hidden="true" className="h-2 w-2 rounded-full bg-green-500" />
-                  Eco-Loom dashboard
-                </span>
-                <span className="rounded-full bg-green-50 px-2.5 py-1 text-green-800">
-                  Actual product view
-                </span>
-              </div>
-              <div className="relative aspect-[1.08] overflow-hidden rounded-b-[1.25rem] bg-green-50">
-                <Image
-                  alt="Eco-Loom dashboard showing facility scope, carbon metrics, emissions by scope, facility comparison, and reporting activity."
-                  className="object-cover object-top"
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  src="/eco-loom-dashboard-hero.png"
-                />
-              </div>
-              <figcaption className="sr-only">
-                Genuine screenshot of the Eco-Loom dashboard interface.
-              </figcaption>
-            </figure>
+            <ProductScreenshotCarousel />
           </div>
         </div>
 

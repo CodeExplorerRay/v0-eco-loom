@@ -1,6 +1,14 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Check, X, Star, Zap, Users, Building, Crown, Leaf } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+
+export const metadata: Metadata = {
+  title: 'Pricing',
+  description:
+    'Explore Eco-Loom plans for emissions tracking, sustainability reporting, and carbon accounting workflows.',
+  alternates: { canonical: '/pricing' },
+};
 
 export default function PricingPage() {
   const plans = [

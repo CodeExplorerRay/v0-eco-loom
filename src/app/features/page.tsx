@@ -3,9 +3,10 @@ import { ProductDetailPage } from '@/components/product-detail-page';
 import { productFeatures } from '@/lib/marketing/product-content';
 
 export const metadata: Metadata = {
-  title: 'Features | Eco-Loom',
+  title: 'Features',
   description:
     'Explore Eco-Loom features for emissions data intake, dashboards, stakeholder reporting, and progress tracking.',
+  alternates: { canonical: '/features' },
 };
 
 export default function FeaturesPage() {

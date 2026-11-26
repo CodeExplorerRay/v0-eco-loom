@@ -1,7 +1,15 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft, Calendar, Clock, ArrowRight, Leaf } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { blogPosts as siteBlogPosts } from '@/lib/marketing/blog-posts';
+
+export const metadata: Metadata = {
+  title: 'Sustainability & Carbon Accounting Journal',
+  description:
+    'Practical guidance on carbon accounting, emissions data, ESG reporting, and sustainability operations for growing teams.',
+  alternates: { canonical: '/blog' },
+};
 
 type BlogPageProps = {
   searchParams: Promise<{
