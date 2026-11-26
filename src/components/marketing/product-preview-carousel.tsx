@@ -95,13 +95,10 @@ export function ProductScreenshotCarousel() {
 
   return (
     <figure className="overflow-hidden rounded-[1.75rem] border border-emerald-200/80 bg-white shadow-[0_40px_120px_-50px_rgba(21,128,61,0.42)]">
-      <div className="flex items-center justify-between gap-3 border-b border-green-100 px-4 py-3 text-sm font-medium text-gray-700 sm:px-5">
+      <div className="flex items-center border-b border-green-100 px-4 py-3 text-sm font-medium text-gray-700 sm:px-5">
         <span className="flex items-center gap-2">
           <span aria-hidden="true" className="size-2 rounded-full bg-green-500" />
           Eco-Loom product preview
-        </span>
-        <span className="rounded-full bg-green-50 px-3 py-1 text-xs text-green-800">
-          {activeIndex + 1} / {screenshots.length}
         </span>
       </div>
 
