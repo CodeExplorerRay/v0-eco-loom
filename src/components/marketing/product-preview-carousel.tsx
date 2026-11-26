@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
-import { Maximize2, Pause, Play, ZoomIn, ZoomOut } from 'lucide-react';
+import { Pause, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Carousel,
@@ -12,13 +12,6 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from '@/components/ui/carousel';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
 
 const screenshots = [
   {
@@ -73,16 +66,13 @@ export function ProductScreenshotCarousel() {
     () => true
   );
   const [userOptedIntoMotion, setUserOptedIntoMotion] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [zoomLevel, setZoomLevel] = useState(100);
 
   const setCarouselApi = useCallback((carouselApi: CarouselApi) => {
     setApi(carouselApi);
   }, []);
 
   const activeScreenshot = screenshots[activeIndex] ?? screenshots[0];
-  const isAutoPlaying =
-    isPlaying && (!prefersReducedMotion || userOptedIntoMotion) && !isExpanded;
+  const isAutoPlaying = isPlaying && (!prefersReducedMotion || userOptedIntoMotion);
 
   useEffect(() => {
     if (!api) return;
@@ -115,13 +105,6 @@ export function ProductScreenshotCarousel() {
 
   const showScreenshot = (index: number) => {
     api?.scrollTo(index);
-    setIsPlaying(false);
-  };
-
-  const openScreenshot = () => {
-    setIsPlaying(false);
-    setZoomLevel(100);
-    setIsExpanded(true);
   };
 
   return (
@@ -139,8 +122,6 @@ export function ProductScreenshotCarousel() {
       <Carousel
         aria-label="Eco-Loom product screenshots"
         className="group"
-        onFocusCapture={() => setIsPlaying(false)}
-        onMouseEnter={() => setIsPlaying(false)}
         opts={carouselOptions}
         setApi={setCarouselApi}
       >
@@ -214,58 +195,10 @@ export function ProductScreenshotCarousel() {
               {isAutoPlaying ? <Pause aria-hidden="true" data-icon="inline-start" /> : <Play aria-hidden="true" data-icon="inline-start" />}
               {isAutoPlaying ? 'Pause' : 'Play'}
             </Button>
-            <Button onClick={openScreenshot} size="sm" variant="outline">
-              <Maximize2 aria-hidden="true" data-icon="inline-start" />
-              View full size
-            </Button>
           </div>
         </div>
       </figcaption>
 
-      <Dialog onOpenChange={setIsExpanded} open={isExpanded}>
-        <DialogContent className="flex max-h-[90dvh] w-[calc(100vw-1rem)] max-w-[calc(100vw-1rem)] flex-col gap-4 overflow-hidden p-4 sm:w-[calc(100vw-2rem)] sm:max-w-[calc(100vw-2rem)] sm:p-6 lg:max-w-6xl">
-          <DialogHeader className="pr-10 text-left">
-            <DialogTitle>{activeScreenshot.title}</DialogTitle>
-            <DialogDescription>
-              Full-size product screenshot. Scroll or zoom in to inspect interface details.
-            </DialogDescription>
-          </DialogHeader>
-          <div aria-label="Screenshot zoom controls" className="flex items-center justify-end gap-2" role="group">
-            <Button
-              aria-label="Zoom out screenshot"
-              disabled={zoomLevel <= 100}
-              onClick={() => setZoomLevel((current) => Math.max(100, current - 50))}
-              size="icon"
-              variant="outline"
-            >
-              <ZoomOut aria-hidden="true" />
-            </Button>
-            <span aria-live="polite" className="min-w-12 text-center text-xs font-medium tabular-nums text-gray-600">
-              {zoomLevel}%
-            </span>
-            <Button
-              aria-label="Zoom in screenshot"
-              disabled={zoomLevel >= 300}
-              onClick={() => setZoomLevel((current) => Math.min(300, current + 50))}
-              size="icon"
-              variant="outline"
-            >
-              <ZoomIn aria-hidden="true" />
-            </Button>
-          </div>
-          <div className="min-h-0 flex-1 overflow-auto rounded-lg border bg-emerald-50/50 p-2 sm:p-4">
-            <Image
-              alt={activeScreenshot.alt}
-              className="mx-auto h-auto max-w-none transition-[width] motion-reduce:transition-none"
-              height={activeScreenshot.height}
-              sizes="(max-width: 768px) 96vw, 1400px"
-              src={activeScreenshot.src}
-              style={{ width: `${zoomLevel}%` }}
-              width={activeScreenshot.width}
-            />
-          </div>
-        </DialogContent>
-      </Dialog>
     </figure>
   );
 }
