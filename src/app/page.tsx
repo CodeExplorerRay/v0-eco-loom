@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   ArrowRight,
@@ -122,11 +123,21 @@ export default function HomePage() {
         </div>
       </header>
 
-      <section className="relative overflow-hidden pb-24 pt-32 lg:pb-32 lg:pt-40">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute -left-20 top-12 h-72 w-72 rounded-full bg-emerald-200/35 blur-3xl opacity-70" />
-          <div className="absolute right-0 top-28 h-96 w-96 rounded-full bg-lime-200/28 blur-3xl opacity-60" />
-          <div className="absolute bottom-0 left-1/4 h-[28rem] w-[28rem] rounded-full bg-emerald-100/35 blur-3xl opacity-70" />
+      <section className="relative isolate overflow-hidden pb-24 pt-32 lg:pb-32 lg:pt-40">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[50rem] overflow-hidden lg:h-[58rem]"
+        >
+          <Image
+            alt=""
+            className="object-cover object-[10%_center] sm:object-center"
+            fill
+            priority
+            sizes="100vw"
+            src="/eco-loom-hero-bg.png"
+          />
+          <div className="absolute inset-0 bg-white/72 lg:bg-linear-to-r lg:from-white/95 lg:via-white/78 lg:to-white/38" />
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-linear-to-b from-transparent to-emerald-50/60" />
         </div>
 
         <div className="mx-auto grid max-w-7xl items-start gap-10 px-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12 lg:px-8">
