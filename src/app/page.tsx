@@ -83,7 +83,7 @@ export default function HomePage() {
         }}
       />
 
-      <header className="fixed top-0 z-50 w-full border-b border-green-200/60 bg-white/78 backdrop-blur-xl">
+      <header className="fixed top-0 z-50 w-full border-b border-emerald-200/70 bg-white/80 shadow-[0_10px_30px_-24px_rgba(6,78,59,0.4)] backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-4 lg:px-8">
           <Link className="flex items-center gap-2" href="/">
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-linear-to-br from-green-600 to-emerald-600 text-white shadow-sm">
