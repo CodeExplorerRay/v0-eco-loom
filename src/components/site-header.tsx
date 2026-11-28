@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/button';
 
 export function SiteHeader() {
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-emerald-200/70 bg-white/82 shadow-[0_10px_30px_-24px_rgba(6,78,59,0.4)] backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-3.5 lg:px-8">
+    <header className="fixed inset-x-0 top-3 z-50 px-3 sm:px-6">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-2xl border border-white/85 bg-white/62 px-4 py-3 shadow-[0_16px_46px_-24px_rgba(6,78,59,0.48)] ring-1 ring-emerald-950/5 backdrop-blur-2xl lg:px-8">
         <Link className="flex items-center gap-2.5" href="/">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-linear-to-br from-green-600 to-emerald-600 text-white shadow-sm">
             <Leaf className="h-5 w-5" />
