@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, Calendar, Clock, ArrowRight, Leaf } from 'lucide-react';
+import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { SiteFooter } from '@/components/site-footer';
+import { SiteHeader } from '@/components/site-header';
 import { Button } from '@/components/ui/button';
 import { blogPosts as siteBlogPosts } from '@/lib/marketing/blog-posts';
 
@@ -64,24 +66,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
   return (
     <div className="min-h-screen bg-linear-to-b from-white via-green-50 to-emerald-50">
-      {/* Header */}
-      <header className="border-b border-green-200/50 bg-white/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-          <Link className="flex items-center gap-2" href="/">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-linear-to-br from-green-600 to-emerald-600 text-white shadow-sm">
-              <Leaf className="h-5 w-5" />
-            </div>
-            <span className="text-lg font-bold text-green-900">Eco-Loom</span>
-          </Link>
-
-          <Button asChild variant="ghost" className="text-sm text-gray-600 hover:text-green-700">
-            <Link href="/" className="flex items-center gap-2">
-              <ArrowLeft className="h-4 w-4" />
-              Back to site
-            </Link>
-          </Button>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
@@ -297,13 +282,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           </div>
 
           <div className="max-w-md mx-auto space-y-4">
-            <div className="flex gap-2">
+            <div className="flex flex-col gap-2 sm:flex-row">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-green-600"
+                className="w-full rounded-lg border-0 px-4 py-3 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-green-600 sm:min-w-0 sm:flex-1"
               />
-              <Button className="bg-white text-green-600 hover:bg-green-50 px-6 py-3 font-semibold">
+              <Button className="h-auto w-full bg-white px-6 py-3 font-semibold text-green-600 hover:bg-green-50 sm:w-auto">
                 Subscribe
               </Button>
             </div>
@@ -313,6 +298,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           </div>
         </div>
       </section>
+      <SiteFooter />
     </div>
   );
 }

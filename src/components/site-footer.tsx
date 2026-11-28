@@ -5,6 +5,7 @@ const productLinks = [
   { label: 'How it works', href: '/how-it-works' },
   { label: 'Features', href: '/features' },
   { label: 'Why Eco-Loom', href: '/why-eco-loom' },
+  { label: 'Pricing', href: '/pricing' },
 ];
 
 const companyLinks = [

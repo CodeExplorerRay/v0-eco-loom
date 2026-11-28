@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, Mail, MessageSquare, Phone, MapPin, Send, Leaf } from 'lucide-react';
+import { Mail, MessageSquare, Phone, MapPin, Send } from 'lucide-react';
+import { SiteFooter } from '@/components/site-footer';
+import { SiteHeader } from '@/components/site-header';
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
@@ -13,24 +15,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-linear-to-b from-white via-green-50 to-emerald-50">
-      {/* Header */}
-      <header className="border-b border-green-200/50 bg-white/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-          <Link className="flex items-center gap-2" href="/">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-linear-to-br from-green-600 to-emerald-600 text-white shadow-sm">
-              <Leaf className="h-5 w-5" />
-            </div>
-            <span className="text-lg font-bold text-green-900">Eco-Loom</span>
-          </Link>
-
-          <Button asChild variant="ghost" className="text-sm text-gray-600 hover:text-green-700">
-            <Link href="/" className="flex items-center gap-2">
-              <ArrowLeft className="h-4 w-4" />
-              Back to site
-            </Link>
-          </Button>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
@@ -330,6 +315,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <SiteFooter />
     </div>
   );
 }

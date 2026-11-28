@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { ArrowLeft, Shield, Lock, Key, Database, Users, AlertTriangle, Leaf } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Shield, Lock, Key, Database, Users, AlertTriangle } from 'lucide-react';
+import { SiteFooter } from '@/components/site-footer';
+import { SiteHeader } from '@/components/site-header';
 
 export const metadata: Metadata = {
   title: 'Security Overview',
@@ -12,27 +12,10 @@ export const metadata: Metadata = {
 export default function SecurityPage() {
   return (
     <div className="min-h-screen bg-linear-to-b from-white via-green-50 to-emerald-50">
-      {/* Header */}
-      <header className="border-b border-green-200/50 bg-white/80 backdrop-blur-md">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-          <Link className="flex items-center gap-2" href="/">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-linear-to-br from-green-600 to-emerald-600 text-white shadow-sm">
-              <Leaf className="h-5 w-5" />
-            </div>
-            <span className="text-lg font-bold text-green-900">Eco-Loom</span>
-          </Link>
-
-          <Button asChild variant="ghost" className="text-sm text-gray-600 hover:text-green-700">
-            <Link href="/" className="flex items-center gap-2">
-              <ArrowLeft className="h-4 w-4" />
-              Back to site
-            </Link>
-          </Button>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Content */}
-      <main className="mx-auto max-w-4xl px-6 py-16 lg:px-8">
+      <main className="mx-auto max-w-4xl px-6 pb-16 pt-28 lg:px-8 lg:pb-20 lg:pt-32">
         <div className="mb-12 text-center">
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-green-100 mb-6">
             <Shield className="h-8 w-8 text-green-600" />
@@ -192,6 +175,7 @@ export default function SecurityPage() {
           </section>
         </div>
       </main>
+      <SiteFooter />
     </div>
   );
 }
